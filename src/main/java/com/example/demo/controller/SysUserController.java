@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+@Controller
 public class SysUserController {
     @Autowired
     private SysUserServiceImpl sUserService;
@@ -28,6 +30,8 @@ public class SysUserController {
             jsonObject.put("code", 1);
             jsonObject.put("msg", "登录成功");
             session.setAttribute("name", name);
+
+            System.out.println("!!!!!!");
             return jsonObject;
         } else {
             jsonObject.put("code", 0);
