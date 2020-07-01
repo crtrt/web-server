@@ -1,6 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.SysUser;
+
 public interface SysUserService {
     //验证登录
-    boolean veritypasswd(String name, String password);
+    boolean verifypasswd(String name, String password);
+    //注册
+    void addSysUser(SysUser sysUser);
 }

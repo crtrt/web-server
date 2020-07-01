@@ -1,26 +1,27 @@
 package com.example.demo.domain;
 
+import java.sql.Timestamp;
 
 public class SysUser {
 
-  private long id;
-  private long orgId;
-  private long clientId;
-  private String userName;
-  private String password;
-  private String realName;
-  private String sex;
-  private String email;
-  private String phone;
-  private String mobile;
-  private String description;
-  private String isactive;
-  private java.sql.Timestamp created;
-  private long createby;
-  private java.sql.Timestamp updated;
-  private long updateby;
-  private String remove;
-  private String datafilter;
+  private long ID;
+  private long ORG_ID;
+  private long CLIENT_ID;
+  private String UserName;
+  private String Password;
+  private String REAL_NAME;
+  private String SEX;
+  private String EMAIL;
+  private String PHONE;
+  private String MOBILE;
+  private String DESCRIPTION;
+  private String ISACTIVE;
+  private java.sql.Timestamp CREATED;
+  private long CREATEBY;
+  private java.sql.Timestamp UPDATED;
+  private long UPDATEBY;
+  private String REMOVE;
+  private String DATAFILTER;
   private String theme;
   private String defaultpage;
   private String logoimage;
@@ -28,168 +29,149 @@ public class SysUser {
   private String appversion;
   private String jsonauth;
 
-
-  public long getId() {
-    return id;
+  public long getID() {
+    return ID;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setID(long ID) {
+    this.ID = ID;
   }
 
-
-  public long getOrgId() {
-    return orgId;
+  public long getORG_ID() {
+    return ORG_ID;
   }
 
-  public void setOrgId(long orgId) {
-    this.orgId = orgId;
+  public void setORG_ID(long ORG_ID) {
+    this.ORG_ID = ORG_ID;
   }
 
-
-  public long getClientId() {
-    return clientId;
+  public long getCLIENT_ID() {
+    return CLIENT_ID;
   }
 
-  public void setClientId(long clientId) {
-    this.clientId = clientId;
+  public void setCLIENT_ID(long CLIENT_ID) {
+    this.CLIENT_ID = CLIENT_ID;
   }
-
 
   public String getUserName() {
-    return userName;
+    return UserName;
   }
 
   public void setUserName(String userName) {
-    this.userName = userName;
+    UserName = userName;
   }
 
-
   public String getPassword() {
-    return password;
+    return Password;
   }
 
   public void setPassword(String password) {
-    this.password = password;
+    Password = password;
   }
 
-
-  public String getRealName() {
-    return realName;
+  public String getREAL_NAME() {
+    return REAL_NAME;
   }
 
-  public void setRealName(String realName) {
-    this.realName = realName;
+  public void setREAL_NAME(String REAL_NAME) {
+    this.REAL_NAME = REAL_NAME;
   }
 
-
-  public String getSex() {
-    return sex;
+  public String getSEX() {
+    return SEX;
   }
 
-  public void setSex(String sex) {
-    this.sex = sex;
+  public void setSEX(String SEX) {
+    this.SEX = SEX;
   }
 
-
-  public String getEmail() {
-    return email;
+  public String getEMAIL() {
+    return EMAIL;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setEMAIL(String EMAIL) {
+    this.EMAIL = EMAIL;
   }
 
-
-  public String getPhone() {
-    return phone;
+  public String getPHONE() {
+    return PHONE;
   }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
+  public void setPHONE(String PHONE) {
+    this.PHONE = PHONE;
   }
 
-
-  public String getMobile() {
-    return mobile;
+  public String getMOBILE() {
+    return MOBILE;
   }
 
-  public void setMobile(String mobile) {
-    this.mobile = mobile;
+  public void setMOBILE(String MOBILE) {
+    this.MOBILE = MOBILE;
   }
 
-
-  public String getDescription() {
-    return description;
+  public String getDESCRIPTION() {
+    return DESCRIPTION;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setDESCRIPTION(String DESCRIPTION) {
+    this.DESCRIPTION = DESCRIPTION;
   }
 
-
-  public String getIsactive() {
-    return isactive;
+  public String getISACTIVE() {
+    return ISACTIVE;
   }
 
-  public void setIsactive(String isactive) {
-    this.isactive = isactive;
+  public void setISACTIVE(String ISACTIVE) {
+    this.ISACTIVE = ISACTIVE;
   }
 
-
-  public java.sql.Timestamp getCreated() {
-    return created;
+  public Timestamp getCREATED() {
+    return CREATED;
   }
 
-  public void setCreated(java.sql.Timestamp created) {
-    this.created = created;
+  public void setCREATED(Timestamp CREATED) {
+    this.CREATED = CREATED;
   }
 
-
-  public long getCreateby() {
-    return createby;
+  public long getCREATEBY() {
+    return CREATEBY;
   }
 
-  public void setCreateby(long createby) {
-    this.createby = createby;
+  public void setCREATEBY(long CREATEBY) {
+    this.CREATEBY = CREATEBY;
   }
 
-
-  public java.sql.Timestamp getUpdated() {
-    return updated;
+  public Timestamp getUPDATED() {
+    return UPDATED;
   }
 
-  public void setUpdated(java.sql.Timestamp updated) {
-    this.updated = updated;
+  public void setUPDATED(Timestamp UPDATED) {
+    this.UPDATED = UPDATED;
   }
 
-
-  public long getUpdateby() {
-    return updateby;
+  public long getUPDATEBY() {
+    return UPDATEBY;
   }
 
-  public void setUpdateby(long updateby) {
-    this.updateby = updateby;
+  public void setUPDATEBY(long UPDATEBY) {
+    this.UPDATEBY = UPDATEBY;
   }
 
-
-  public String getRemove() {
-    return remove;
+  public String getREMOVE() {
+    return REMOVE;
   }
 
-  public void setRemove(String remove) {
-    this.remove = remove;
+  public void setREMOVE(String REMOVE) {
+    this.REMOVE = REMOVE;
   }
 
-
-  public String getDatafilter() {
-    return datafilter;
+  public String getDATAFILTER() {
+    return DATAFILTER;
   }
 
-  public void setDatafilter(String datafilter) {
-    this.datafilter = datafilter;
+  public void setDATAFILTER(String DATAFILTER) {
+    this.DATAFILTER = DATAFILTER;
   }
-
 
   public String getTheme() {
     return theme;
@@ -199,7 +181,6 @@ public class SysUser {
     this.theme = theme;
   }
 
-
   public String getDefaultpage() {
     return defaultpage;
   }
@@ -207,7 +188,6 @@ public class SysUser {
   public void setDefaultpage(String defaultpage) {
     this.defaultpage = defaultpage;
   }
-
 
   public String getLogoimage() {
     return logoimage;
@@ -217,31 +197,7 @@ public class SysUser {
     this.logoimage = logoimage;
   }
 
-
   public String getQqopenid() {
     return qqopenid;
   }
-
-  public void setQqopenid(String qqopenid) {
-    this.qqopenid = qqopenid;
-  }
-
-
-  public String getAppversion() {
-    return appversion;
-  }
-
-  public void setAppversion(String appversion) {
-    this.appversion = appversion;
-  }
-
-
-  public String getJsonauth() {
-    return jsonauth;
-  }
-
-  public void setJsonauth(String jsonauth) {
-    this.jsonauth = jsonauth;
-  }
-
 }
