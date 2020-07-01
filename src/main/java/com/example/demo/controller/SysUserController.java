@@ -36,7 +36,6 @@ public class SysUserController {
             jsonObject.put("msg", "登录成功");
             session.setAttribute("name", name);
 
-            System.out.println("!!!!!!");
             return jsonObject;
         } else {
             jsonObject.put("code", 0);
@@ -49,7 +48,7 @@ public class SysUserController {
     // 注册
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Object Register(HttpServletRequest req, HttpSession session) {
+    public Object Register(HttpServletRequest req) {
 
         JSONObject jsonObject = new JSONObject();
         SysUser suser = new SysUser();
@@ -63,6 +62,8 @@ public class SysUserController {
         String phone = req.getParameter("phone").trim();
         String mobile = req.getParameter("mobile").trim();
 
+        System.out.println(name+"  "+pwd+"  "+sex+"   "+phone+"     "+email+"      "+sex);
+
 
         suser.setID(sam);
         suser.setUserName(name);
@@ -74,7 +75,6 @@ public class SysUserController {
         suser.setMOBILE(mobile);
 
         sUserService.addSysUser(suser);
-
         jsonObject.put("code", 1);
         jsonObject.put("msg", "注册成功");
         return jsonObject;
