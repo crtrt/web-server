@@ -7,4 +7,8 @@ public interface SysUserService {
     boolean verifypasswd(String name, String password);
     //注册
     void addSysUser(SysUser sysUser);
+    //ID
+    int getsUserID(String name, String password);
+    //num
+    int getUserNum();
 }

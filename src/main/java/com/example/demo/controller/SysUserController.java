@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class SysUserController {
     @Autowired
     private SysUserServiceImpl sUserService;
 
-    @Autowired
-    private SysUserMapper susermapper;
 
     //    判断是否登录成功
     @ResponseBody
@@ -29,12 +29,13 @@ public class SysUserController {
 
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-
+        int id = sUserService.getsUserID(name,password);
         boolean res = sUserService.verifypasswd(name, password);
         if (res) {
             jsonObject.put("code", 1);
-            jsonObject.put("msg", "登录成功");
+            //jsonObject.put("msg", "登录成功");
             session.setAttribute("name", name);
+            jsonObject.put("msg",id);
 
             return jsonObject;
         } else {
@@ -53,7 +54,7 @@ public class SysUserController {
         JSONObject jsonObject = new JSONObject();
         SysUser suser = new SysUser();
 
-        int sam = susermapper.selectall() + 10000;
+        int sam = sUserService.getUserNum() + 10001;
         String name = req.getParameter("name").trim();
         String pwd = req.getParameter("password").trim();
         String realname = req.getParameter("realname").trim();
@@ -62,10 +63,16 @@ public class SysUserController {
         String phone = req.getParameter("phone").trim();
         String mobile = req.getParameter("mobile").trim();
 
-        System.out.println(name+"  "+pwd+"  "+sex+"   "+phone+"     "+email+"      "+sex);
 
+        Timestamp time= new Timestamp(System.currentTimeMillis());//获取系统当前时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStr = df.format(time);
+        time = Timestamp.valueOf(timeStr);
+        System.out.println(time);
 
         suser.setID(sam);
+        suser.setORG_ID(sam);
+        suser.setCLIENT_ID(sam);
         suser.setUserName(name);
         suser.setPassword(pwd);
         suser.setREAL_NAME(realname);
@@ -73,7 +80,9 @@ public class SysUserController {
         suser.setEMAIL(email);
         suser.setPHONE(phone);
         suser.setMOBILE(mobile);
+        suser.setCREATED(time);
 
+        //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
         sUserService.addSysUser(suser);
         jsonObject.put("code", 1);
         jsonObject.put("msg", "注册成功");

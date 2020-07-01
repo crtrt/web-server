@@ -4,9 +4,9 @@ import java.sql.Timestamp;
 
 public class SysUser {
 
-  private long ID;
-  private long ORG_ID;
-  private long CLIENT_ID;
+  private int ID;
+  private int ORG_ID;
+  private int CLIENT_ID;
   private String UserName;
   private String Password;
   private String REAL_NAME;
@@ -29,27 +29,27 @@ public class SysUser {
   private String appversion;
   private String jsonauth;
 
-  public long getID() {
+  public int getID() {
     return ID;
   }
 
-  public void setID(long ID) {
+  public void setID(int ID) {
     this.ID = ID;
   }
 
-  public long getORG_ID() {
+  public int getORG_ID() {
     return ORG_ID;
   }
 
-  public void setORG_ID(long ORG_ID) {
+  public void setORG_ID(int ORG_ID) {
     this.ORG_ID = ORG_ID;
   }
 
-  public long getCLIENT_ID() {
+  public int getCLIENT_ID() {
     return CLIENT_ID;
   }
 
-  public void setCLIENT_ID(long CLIENT_ID) {
+  public void setCLIENT_ID(int CLIENT_ID) {
     this.CLIENT_ID = CLIENT_ID;
   }
 

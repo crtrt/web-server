@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SysUserServiceImpl implements SysUserService {
+
     @Autowired
     private SysUserMapper sUserMapper;
 
@@ -20,5 +21,15 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public void addSysUser(SysUser sysUser) {
         sUserMapper.addSysUser(sysUser);
+    }
+
+    @Override
+    public int getsUserID(String name, String password) {
+        return sUserMapper.getsUserID(name, password);
+    }
+
+    @Override
+    public int getUserNum() {
+        return sUserMapper.getnum();
     }
 }
