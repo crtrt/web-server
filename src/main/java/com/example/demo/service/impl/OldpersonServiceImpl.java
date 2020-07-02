@@ -20,7 +20,7 @@ public class OldpersonServiceImpl implements OldpersonService {
 
     @Override
     public boolean deleteOldperson(int id) {
-        return false;
+        return oldpersonMapper.deleteOldperson(id)>0?true:false;
     }
 
     @Override

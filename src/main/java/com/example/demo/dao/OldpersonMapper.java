@@ -15,6 +15,7 @@ public interface OldpersonMapper {
     int insertOldperson(Oldperson oldperson);
 
     //删
+    @Update("UPDATE oldperson_info SET ISACTIVE='0' WHERE ID=#{param1}")
     int deleteOldperson(int id);
 
     //改
@@ -27,9 +28,9 @@ public interface OldpersonMapper {
     int updateByPrimaryKey(int id, Oldperson oldperson);
 
     //查
-    @Select("SELECT * FROM oldperson_info WHERE ID=#{0}")
+    @Select("SELECT * FROM oldperson_info WHERE ID=#{0} AND ISACTIVE='1' ")
     Oldperson selectByPrimaryKey(int id);
 
-    @Select("SELECT * FROM oldperson_info")
+    @Select("SELECT * FROM oldperson_info WHERE ISACTIVE='1' ")
     List<Oldperson> selectAll();
 }

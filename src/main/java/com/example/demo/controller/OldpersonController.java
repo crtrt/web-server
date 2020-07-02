@@ -32,6 +32,12 @@ public class OldpersonController {
         return oldpersonService.selectByPrimaryKey(Integer.parseInt(id));
     }
 
+    @RequestMapping(value="/oldperson/delete", method = RequestMethod.POST)
+    public Object Delete(HttpServletRequest req){
+        String id = req.getParameter("old_id");
+        return oldpersonService.deleteOldperson(Integer.parseInt(id));
+    }
+
     @ResponseBody
     @RequestMapping(value="/oldperson/update",method=RequestMethod.POST)
     public Object UpdateByPrimaryKey(HttpServletRequest req){

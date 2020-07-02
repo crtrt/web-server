@@ -87,6 +87,7 @@ public class SysUserController {
         suser.setPHONE(phone);
         suser.setMOBILE(mobile);
         suser.setCREATED(time);
+        suser.setISACTIVE("1");//有效
 
         //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
         boolean ad = sUserService.addSysUser(suser);
@@ -148,7 +149,7 @@ public class SysUserController {
     public Object AllSysUser(){ return sUserService.selectAll();}
 
     @RequestMapping(value="/sysuser/detail", method = RequestMethod.POST)
-    public Object SearchPerson(HttpServletRequest req){
+    public Object SearchOldperson(HttpServletRequest req){
         String id = req.getParameter("id");
         return sUserService.selectByPrimaryKey(Integer.parseInt(id));
     }
