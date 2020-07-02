@@ -33,9 +33,9 @@ public class SysUserController {
         boolean res = sUserService.verifypasswd(name, password);
         if (res) {
             jsonObject.put("code", 1);
-            //jsonObject.put("msg", "登录成功");
             session.setAttribute("name", name);
-            jsonObject.put("msg",id);
+            jsonObject.put("msg","登录成功");
+            jsonObject.put("id",id);
 
             return jsonObject;
         } else {

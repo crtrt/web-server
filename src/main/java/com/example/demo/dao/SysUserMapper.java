@@ -11,7 +11,7 @@ public interface SysUserMapper {
     int verifyPassword(String username, String password);
 
     @Insert("INSERT INTO sys_user(ID, ORG_ID, CLIENT_ID, UserName, Password, REAL_NAME, SEX, EMAIL, PHONE, MOBILE,CREATED)" +
-            "VALUES (#{ID},#{ORG_ID},#{CLIENT_ID},#{UserName},#{Password},#{REAL_NAME},#{SEX},#{EMAIL},#{PHONE},#{MOBILE},#{CREATED}")
+            "VALUES (#{ID},#{ORG_ID},#{CLIENT_ID},#{UserName},#{Password},#{REAL_NAME},#{SEX},#{EMAIL},#{PHONE},#{MOBILE},#{CREATED})")
     void addSysUser(SysUser sysUser);
 
     @Select("SELECT COUNT(*) FROM sys_user")
