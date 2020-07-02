@@ -6,6 +6,8 @@ import com.example.demo.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SysUserServiceImpl implements SysUserService {
 
@@ -31,5 +33,20 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public int getUserNum() {
         return sUserMapper.getnum();
+    }
+
+    @Override
+    public boolean updateByPrimaryKey(int id, SysUser sUser) {
+        return sUserMapper.updateByPrimaryKey(id,sUser)>0?true:false;
+    }
+
+    @Override
+    public SysUser selectByPrimaryKey(int id) {
+        return sUserMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<SysUser> selectAll() {
+        return sUserMapper.selectAll();
     }
 }

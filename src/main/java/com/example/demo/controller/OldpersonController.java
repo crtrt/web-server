@@ -28,7 +28,7 @@ public class OldpersonController {
 
     @RequestMapping(value="/oldperson/search", method = RequestMethod.POST)
     public Object SearchPerson(HttpServletRequest req){
-        String id = req.getParameter("id");
+        String id = req.getParameter("old_id");
         return oldpersonService.selectByPrimaryKey(Integer.parseInt(id));
     }
 
@@ -37,12 +37,12 @@ public class OldpersonController {
     public Object UpdateByPrimaryKey(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
 
-        String id = req.getParameter("id");
+        String id = req.getParameter("old_id");
         String username = req.getParameter("username");
         String gender = req.getParameter("gender");
         String phone = req.getParameter("phone");
         String idcard = req.getParameter("id_card");
-        String birth = req.getParameter("birthday");
+        //String birth = req.getParameter("birthday");
         String roomnum = req.getParameter("room_number");
         String fguardianname = req.getParameter("fguardian_name");
         String fguardianrel = req.getParameter("fguardian_relationship");
@@ -64,6 +64,7 @@ public class OldpersonController {
         old.setPhone(phone);
         old.setId_card(idcard);
         //old.setBirthday(Date.valueOf(birth));
+        //时间格式问题
         old.setRoom_number(roomnum);
         old.setFirstguardian_name(fguardianname);
         old.setFirstguardian_relationship(fguardianrel);

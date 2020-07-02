@@ -9,12 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+@RestController
 @Controller
 public class SysUserController {
     @Autowired
@@ -98,6 +100,57 @@ public class SysUserController {
             jsonObject.put("msg", "ERROR");
             return jsonObject;
         }
+    }
+
+    //update
+    @ResponseBody
+    @RequestMapping(value = "/sysuser/detail/update", method = RequestMethod.POST)
+    public Object Update(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+        SysUser suser = new SysUser();
+
+        String id = req.getParameter("id").trim();
+        String name = req.getParameter("name").trim();
+        //String pwd = req.getParameter("password").trim();
+        String realname = req.getParameter("realname").trim();
+        String email = req.getParameter("email").trim();
+        String phone = req.getParameter("phone").trim();
+        String mobile = req.getParameter("mobile").trim();
+
+
+        Timestamp time= new Timestamp(System.currentTimeMillis());//获取系统当前时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStr = df.format(time);
+        time = Timestamp.valueOf(timeStr);
+        //System.out.println(time);
+        suser.setUserName(name);
+        //suser.setPassword(pwd);
+        suser.setREAL_NAME(realname);
+        suser.setEMAIL(email);
+        suser.setPHONE(phone);
+        suser.setMOBILE(mobile);
+        suser.setUPDATED(time);
+
+        boolean updates = sUserService.updateByPrimaryKey(Integer.parseInt(id),suser);
+        if(updates) {
+            jsonObject.put("code", 1);
+            jsonObject.put("msg", "修改成功");
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code", 0);
+            jsonObject.put("msg", "ERROR");
+            return jsonObject;
+        }
+    }
+
+    @RequestMapping(value = "/sysuser", method = RequestMethod.GET)
+    public Object AllSysUser(){ return sUserService.selectAll();}
+
+    @RequestMapping(value="/sysuser/detail", method = RequestMethod.POST)
+    public Object SearchPerson(HttpServletRequest req){
+        String id = req.getParameter("id");
+        return sUserService.selectByPrimaryKey(Integer.parseInt(id));
     }
 
 }
