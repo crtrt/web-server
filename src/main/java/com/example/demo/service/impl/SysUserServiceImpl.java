@@ -19,8 +19,8 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public void addSysUser(SysUser sysUser) {
-        sUserMapper.addSysUser(sysUser);
+    public boolean addSysUser(SysUser sysUser) {
+        return sUserMapper.addSysUser(sysUser)>0?true:false;
     }
 
     @Override

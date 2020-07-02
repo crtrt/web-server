@@ -32,15 +32,19 @@ public class SysUserController {
         int id = sUserService.getsUserID(name,password);
         boolean res = sUserService.verifypasswd(name, password);
         if (res) {
-            jsonObject.put("code", 1);
+
             session.setAttribute("name", name);
-            jsonObject.put("msg","登录成功");
+            jsonObject.put("code", 1);
             jsonObject.put("id",id);
+            jsonObject.put("msg","登录成功");
 
             return jsonObject;
+
         } else {
+
             jsonObject.put("code", 0);
             jsonObject.put("msg", "用户名或密码错误");
+
             return jsonObject;
         }
 
@@ -68,7 +72,7 @@ public class SysUserController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
-        System.out.println(time);
+        //System.out.println(time);
 
         suser.setID(sam);
         suser.setORG_ID(sam);
@@ -83,10 +87,17 @@ public class SysUserController {
         suser.setCREATED(time);
 
         //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
-        sUserService.addSysUser(suser);
-        jsonObject.put("code", 1);
-        jsonObject.put("msg", "注册成功");
-        return jsonObject;
+        boolean ad = sUserService.addSysUser(suser);
+        if(ad) {
+            jsonObject.put("code", 1);
+            jsonObject.put("msg", "注册成功");
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code", 0);
+            jsonObject.put("msg", "ERROR");
+            return jsonObject;
+        }
     }
 
 }

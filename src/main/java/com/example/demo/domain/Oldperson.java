@@ -1,65 +1,63 @@
 package com.example.demo.domain;
 
 
+import java.sql.Timestamp;
+
 public class Oldperson {
 
-  private long id;
-  private long orgId;
-  private long clientId;
+  private int ID;
+  private int ORG_ID;
+  private int CLIENT_ID;
   private String username;
   private String gender;
   private String phone;
-  private String idCard;
+  private String id_card;
   private java.sql.Timestamp birthday;
-  private java.sql.Timestamp checkinDate;
-  private java.sql.Timestamp checkoutDate;
-  private String imgsetDir;
-  private String profilePhoto;
-  private String roomNumber;
-  private String firstguardianName;
-  private String firstguardianRelationship;
-  private String firstguardianPhone;
-  private String firstguardianWechat;
-  private String secondguardianName;
-  private String secondguardianRelationship;
-  private String secondguardianPhone;
-  private String secondguardianWechat;
-  private String healthState;
-  private String description;
-  private String isactive;
-  private java.sql.Timestamp created;
-  private long createby;
-  private java.sql.Timestamp updated;
-  private long updateby;
-  private String remove;
+  private java.sql.Timestamp checkin_date;
+  private java.sql.Timestamp checkoutd_ate;
+  private String imgset_dir;
+  private String profile_photo;
+  private String room_number;
+  private String firstguardian_name;
+  private String firstguardian_relationship;
+  private String firstguardian_phone;
+  private String firstguardian_wechat;
+  private String secondguardian_name;
+  private String secondguardian_relationship;
+  private String secondguardian_phone;
+  private String secondguardian_wechat;
+  private String health_state;
+  private String DESCRIPTION;
+  private String ISACTIVE;
+  private java.sql.Timestamp CREATED;
+  private int CREATEBY;
+  private java.sql.Timestamp UPDATED;
+  private int UPDATEBY;
+  private String REMOVE;
 
-
-  public long getId() {
-    return id;
+  public int getID() {
+    return ID;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setID(int ID) {
+    this.ID = ID;
   }
 
-
-  public long getOrgId() {
-    return orgId;
+  public int getORG_ID() {
+    return ORG_ID;
   }
 
-  public void setOrgId(long orgId) {
-    this.orgId = orgId;
+  public void setORG_ID(int ORG_ID) {
+    this.ORG_ID = ORG_ID;
   }
 
-
-  public long getClientId() {
-    return clientId;
+  public int getCLIENT_ID() {
+    return CLIENT_ID;
   }
 
-  public void setClientId(long clientId) {
-    this.clientId = clientId;
+  public void setCLIENT_ID(int CLIENT_ID) {
+    this.CLIENT_ID = CLIENT_ID;
   }
-
 
   public String getUsername() {
     return username;
@@ -69,7 +67,6 @@ public class Oldperson {
     this.username = username;
   }
 
-
   public String getGender() {
     return gender;
   }
@@ -77,7 +74,6 @@ public class Oldperson {
   public void setGender(String gender) {
     this.gender = gender;
   }
-
 
   public String getPhone() {
     return phone;
@@ -87,211 +83,189 @@ public class Oldperson {
     this.phone = phone;
   }
 
-
-  public String getIdCard() {
-    return idCard;
+  public String getId_card() {
+    return id_card;
   }
 
-  public void setIdCard(String idCard) {
-    this.idCard = idCard;
+  public void setId_card(String id_card) {
+    this.id_card = id_card;
   }
 
-
-  public java.sql.Timestamp getBirthday() {
+  public Timestamp getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(java.sql.Timestamp birthday) {
+  public void setBirthday(Timestamp birthday) {
     this.birthday = birthday;
   }
 
-
-  public java.sql.Timestamp getCheckinDate() {
-    return checkinDate;
+  public Timestamp getCheckin_date() {
+    return checkin_date;
   }
 
-  public void setCheckinDate(java.sql.Timestamp checkinDate) {
-    this.checkinDate = checkinDate;
+  public void setCheckin_date(Timestamp checkin_date) {
+    this.checkin_date = checkin_date;
   }
 
-
-  public java.sql.Timestamp getCheckoutDate() {
-    return checkoutDate;
+  public Timestamp getCheckoutd_ate() {
+    return checkoutd_ate;
   }
 
-  public void setCheckoutDate(java.sql.Timestamp checkoutDate) {
-    this.checkoutDate = checkoutDate;
+  public void setCheckoutd_ate(Timestamp checkoutd_ate) {
+    this.checkoutd_ate = checkoutd_ate;
   }
 
-
-  public String getImgsetDir() {
-    return imgsetDir;
+  public String getImgset_dir() {
+    return imgset_dir;
   }
 
-  public void setImgsetDir(String imgsetDir) {
-    this.imgsetDir = imgsetDir;
+  public void setImgset_dir(String imgset_dir) {
+    this.imgset_dir = imgset_dir;
   }
 
-
-  public String getProfilePhoto() {
-    return profilePhoto;
+  public String getProfile_photo() {
+    return profile_photo;
   }
 
-  public void setProfilePhoto(String profilePhoto) {
-    this.profilePhoto = profilePhoto;
+  public void setProfile_photo(String profile_photo) {
+    this.profile_photo = profile_photo;
   }
 
-
-  public String getRoomNumber() {
-    return roomNumber;
+  public String getRoom_number() {
+    return room_number;
   }
 
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
+  public void setRoom_number(String room_number) {
+    this.room_number = room_number;
   }
 
-
-  public String getFirstguardianName() {
-    return firstguardianName;
+  public String getFirstguardian_name() {
+    return firstguardian_name;
   }
 
-  public void setFirstguardianName(String firstguardianName) {
-    this.firstguardianName = firstguardianName;
+  public void setFirstguardian_name(String firstguardian_name) {
+    this.firstguardian_name = firstguardian_name;
   }
 
-
-  public String getFirstguardianRelationship() {
-    return firstguardianRelationship;
+  public String getFirstguardian_relationship() {
+    return firstguardian_relationship;
   }
 
-  public void setFirstguardianRelationship(String firstguardianRelationship) {
-    this.firstguardianRelationship = firstguardianRelationship;
+  public void setFirstguardian_relationship(String firstguardian_relationship) {
+    this.firstguardian_relationship = firstguardian_relationship;
   }
 
-
-  public String getFirstguardianPhone() {
-    return firstguardianPhone;
+  public String getFirstguardian_phone() {
+    return firstguardian_phone;
   }
 
-  public void setFirstguardianPhone(String firstguardianPhone) {
-    this.firstguardianPhone = firstguardianPhone;
+  public void setFirstguardian_phone(String firstguardian_phone) {
+    this.firstguardian_phone = firstguardian_phone;
   }
 
-
-  public String getFirstguardianWechat() {
-    return firstguardianWechat;
+  public String getFirstguardian_wechat() {
+    return firstguardian_wechat;
   }
 
-  public void setFirstguardianWechat(String firstguardianWechat) {
-    this.firstguardianWechat = firstguardianWechat;
+  public void setFirstguardian_wechat(String firstguardian_wechat) {
+    this.firstguardian_wechat = firstguardian_wechat;
   }
 
-
-  public String getSecondguardianName() {
-    return secondguardianName;
+  public String getSecondguardian_name() {
+    return secondguardian_name;
   }
 
-  public void setSecondguardianName(String secondguardianName) {
-    this.secondguardianName = secondguardianName;
+  public void setSecondguardian_name(String secondguardian_name) {
+    this.secondguardian_name = secondguardian_name;
   }
 
-
-  public String getSecondguardianRelationship() {
-    return secondguardianRelationship;
+  public String getSecondguardianr_relationship() {
+    return secondguardian_relationship;
   }
 
-  public void setSecondguardianRelationship(String secondguardianRelationship) {
-    this.secondguardianRelationship = secondguardianRelationship;
+  public void setSecondguardianr_relationship(String secondguardianr_relationship) {
+    this.secondguardian_relationship = secondguardianr_relationship;
   }
 
-
-  public String getSecondguardianPhone() {
-    return secondguardianPhone;
+  public String getSecondguardian_phone() {
+    return secondguardian_phone;
   }
 
-  public void setSecondguardianPhone(String secondguardianPhone) {
-    this.secondguardianPhone = secondguardianPhone;
+  public void setSecondguardian_phone(String secondguardian_phone) {
+    this.secondguardian_phone = secondguardian_phone;
   }
 
-
-  public String getSecondguardianWechat() {
-    return secondguardianWechat;
+  public String getSecondguardian_wechat() {
+    return secondguardian_wechat;
   }
 
-  public void setSecondguardianWechat(String secondguardianWechat) {
-    this.secondguardianWechat = secondguardianWechat;
+  public void setSecondguardian_wechat(String secondguardian_wechat) {
+    this.secondguardian_wechat = secondguardian_wechat;
   }
 
-
-  public String getHealthState() {
-    return healthState;
+  public String getHealth_state() {
+    return health_state;
   }
 
-  public void setHealthState(String healthState) {
-    this.healthState = healthState;
+  public void setHealth_state(String health_state) {
+    this.health_state = health_state;
   }
 
-
-  public String getDescription() {
-    return description;
+  public String getDESCRIPTION() {
+    return DESCRIPTION;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setDESCRIPTION(String DESCRIPTION) {
+    this.DESCRIPTION = DESCRIPTION;
   }
 
-
-  public String getIsactive() {
-    return isactive;
+  public String getISACTIVE() {
+    return ISACTIVE;
   }
 
-  public void setIsactive(String isactive) {
-    this.isactive = isactive;
+  public void setISACTIVE(String ISACTIVE) {
+    this.ISACTIVE = ISACTIVE;
   }
 
-
-  public java.sql.Timestamp getCreated() {
-    return created;
+  public Timestamp getCREATED() {
+    return CREATED;
   }
 
-  public void setCreated(java.sql.Timestamp created) {
-    this.created = created;
+  public void setCREATED(Timestamp CREATED) {
+    this.CREATED = CREATED;
   }
 
-
-  public long getCreateby() {
-    return createby;
+  public int getCREATEBY() {
+    return CREATEBY;
   }
 
-  public void setCreateby(long createby) {
-    this.createby = createby;
+  public void setCREATEBY(int CREATEBY) {
+    this.CREATEBY = CREATEBY;
   }
 
-
-  public java.sql.Timestamp getUpdated() {
-    return updated;
+  public Timestamp getUPDATED() {
+    return UPDATED;
   }
 
-  public void setUpdated(java.sql.Timestamp updated) {
-    this.updated = updated;
+  public void setUPDATED(Timestamp UPDATED) {
+    this.UPDATED = UPDATED;
   }
 
-
-  public long getUpdateby() {
-    return updateby;
+  public int getUPDATEBY() {
+    return UPDATEBY;
   }
 
-  public void setUpdateby(long updateby) {
-    this.updateby = updateby;
+  public void setUPDATEBY(int UPDATEBY) {
+    this.UPDATEBY = UPDATEBY;
   }
 
-
-  public String getRemove() {
-    return remove;
+  public String getREMOVE() {
+    return REMOVE;
   }
 
-  public void setRemove(String remove) {
-    this.remove = remove;
+  public void setREMOVE(String REMOVE) {
+    this.REMOVE = REMOVE;
   }
+
 
 }

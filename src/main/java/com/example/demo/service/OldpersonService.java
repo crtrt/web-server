@@ -6,11 +6,12 @@ import java.util.List;
 
 public interface OldpersonService {
     //增
-    void insertOldperson(Oldperson oldperson);
+    boolean insertOldperson(Oldperson oldperson);
     //删
-    void deleteOldperson(int id);
+    boolean deleteOldperson(int id);
     //改
-    void updataByPrimaryKey(int id, Oldperson oldperson);
+    boolean updateByPrimaryKey(int id, Oldperson oldperson);
     //查
-    List<Oldperson> selectAllPeron();
+    List<Oldperson> selectAll();
+    Oldperson selectByPrimaryKey(int id);
 }
