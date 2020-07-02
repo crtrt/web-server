@@ -11,7 +11,8 @@ import java.util.List;
 @Mapper
 public interface OldpersonMapper {
     //增
-    @Insert("")
+    @Insert("INSERT INTO oldperson_info(ID,ORG_ID,CLIENT_ID,username,gender,phone,id_card,birthday,ISACTIVE) VALUES " +
+            "(#{ID},#{ORG_ID},#{CLIENT_ID},#{username},#{gender},#{phone},#{id_card},#{birthday},'1')")
     int insertOldperson(Oldperson oldperson);
 
     //删
@@ -33,4 +34,7 @@ public interface OldpersonMapper {
 
     @Select("SELECT * FROM oldperson_info WHERE ISACTIVE='1' ")
     List<Oldperson> selectAll();
+
+    @Select("SELECT COUNT(*) FROM oldperson_info")
+    int getNum();
 }

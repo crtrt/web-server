@@ -14,9 +14,7 @@ public class OldpersonServiceImpl implements OldpersonService {
     @Autowired
     private OldpersonMapper oldpersonMapper;
     @Override
-    public boolean insertOldperson(Oldperson oldperson) {
-        return false;
-    }
+    public boolean insertOldperson(Oldperson oldperson) { return oldpersonMapper.insertOldperson(oldperson)>0?true:false; }
 
     @Override
     public boolean deleteOldperson(int id) {
@@ -29,12 +27,12 @@ public class OldpersonServiceImpl implements OldpersonService {
     }
 
     @Override
-    public List<Oldperson> selectAll() {
-        return oldpersonMapper.selectAll();
-    }
+    public List<Oldperson> selectAll() { return oldpersonMapper.selectAll(); }
 
     @Override
-    public Oldperson selectByPrimaryKey(int id) {
-        return oldpersonMapper.selectByPrimaryKey(id);
-    }
+    public Oldperson selectByPrimaryKey(int id) { return oldpersonMapper.selectByPrimaryKey(id); }
+
+    @Override
+    public int getnum() { return oldpersonMapper.getNum(); }
+
 }

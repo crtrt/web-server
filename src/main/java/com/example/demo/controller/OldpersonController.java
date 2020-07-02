@@ -32,6 +32,57 @@ public class OldpersonController {
         return oldpersonService.selectByPrimaryKey(Integer.parseInt(id));
     }
 
+    @RequestMapping(value="/oldperson/insert", method = RequestMethod.POST)
+    public Object InsertPerson(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+        Oldperson old = new Oldperson();
+
+        int sum = oldpersonService.getnum() + 1000001;
+        String username = req.getParameter("username");
+        String gender = req.getParameter("gender");
+        String phone = req.getParameter("phone");
+        String idcard = req.getParameter("id_card");
+        String birth = req.getParameter("birthday");
+        String sysuserid = req.getParameter("id");
+
+        Timestamp time= new Timestamp(System.currentTimeMillis());//获取系统当前时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStr = df.format(time);
+        time = Timestamp.valueOf(timeStr);
+
+        Timestamp birthday = Timestamp.valueOf(birth);
+        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
+        String timeStr1 = df1.format(birth);
+        birthday = Timestamp.valueOf(timeStr1);
+
+        old.setID(sum);
+        old.setORG_ID(sum);
+        old.setCLIENT_ID(sum);
+        old.setUsername(username);
+        old.setGender(gender);
+        old.setPhone(phone);
+        old.setId_card(idcard);
+        old.setBirthday(birthday);
+        old.setISACTIVE("1");
+        old.setCREATED(time);
+        old.setCREATEBY(Integer.parseInt(sysuserid));
+
+        boolean insert = oldpersonService.insertOldperson(old);
+        if(insert){
+            jsonObject.put("code",1);
+            jsonObject.put("msg","添加成功");
+            jsonObject.put("id",sum);
+
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+
+            return jsonObject;
+        }
+    }
+
     @RequestMapping(value="/oldperson/delete", method = RequestMethod.POST)
     public Object Delete(HttpServletRequest req){
         String id = req.getParameter("old_id");
@@ -48,7 +99,7 @@ public class OldpersonController {
         String gender = req.getParameter("gender");
         String phone = req.getParameter("phone");
         String idcard = req.getParameter("id_card");
-        //String birth = req.getParameter("birthday");
+        String birth = req.getParameter("birthday");
         String roomnum = req.getParameter("room_number");
         String fguardianname = req.getParameter("fguardian_name");
         String fguardianrel = req.getParameter("fguardian_relationship");
@@ -58,19 +109,24 @@ public class OldpersonController {
         String sguardianrel = req.getParameter("sguardian_relationship");
         String sguardianphone = req.getParameter("sguardian_phone");
         String sguardianwechat = req.getParameter("sguardian_wechat");
-        String updateby = req.getParameter("sysUser_id");
+        String updateby = req.getParameter("id");//sysuser
+
         Timestamp time= new Timestamp(System.currentTimeMillis());//获取系统当前时间
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
+
+        Timestamp birthday = Timestamp.valueOf(birth);
+        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
+        String timeStr1 = df1.format(birth);
+        birthday = Timestamp.valueOf(timeStr1);
 
         Oldperson old = new Oldperson();
         old.setUsername(username);
         old.setGender(gender);
         old.setPhone(phone);
         old.setId_card(idcard);
-        //old.setBirthday(Date.valueOf(birth));
-        //时间格式问题
+        old.setBirthday(birthday);
         old.setRoom_number(roomnum);
         old.setFirstguardian_name(fguardianname);
         old.setFirstguardian_relationship(fguardianrel);
