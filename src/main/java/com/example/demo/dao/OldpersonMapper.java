@@ -32,6 +32,9 @@ public interface OldpersonMapper {
     @Select("SELECT * FROM oldperson_info WHERE ID=#{0} AND ISACTIVE='1' ")
     Oldperson selectByPrimaryKey(int id);
 
+    @Select("SELECT COUNT(*) FROM oldperson_info WHERE ID=#{0} AND ISACTIVE='1' ")
+    int checkByPrimaryKey(int id);
+
     @Select("SELECT * FROM oldperson_info WHERE ISACTIVE='1' ")
     List<Oldperson> selectAll();
 

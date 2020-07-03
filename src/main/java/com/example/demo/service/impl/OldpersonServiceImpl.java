@@ -33,6 +33,11 @@ public class OldpersonServiceImpl implements OldpersonService {
     public Oldperson selectByPrimaryKey(int id) { return oldpersonMapper.selectByPrimaryKey(id); }
 
     @Override
+    public boolean checkbyPrimaryKey(int id) {
+        return oldpersonMapper.checkByPrimaryKey(id)>0?true:false;
+    }
+
+    @Override
     public int getnum() { return oldpersonMapper.getNum(); }
 
 }

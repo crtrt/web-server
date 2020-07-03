@@ -31,6 +31,9 @@ public interface EmployeeMapper {
     @Select("SELECT * FROM employee_info WHERE ID=#{0} AND ISACTIVE='1' ")
     Employee selectByPrimaryKey(int id);
 
+    @Select("SELECT COUNT(*) FROM employee_info WHERE ID=#{0} AND ISACTIVE='1' ")
+    int checkByPrimaryKey(int id);
+
     @Select("SELECT * FROM employee_info WHERE ISACTIVE='1' ")
     List<Employee> selectAll();
 

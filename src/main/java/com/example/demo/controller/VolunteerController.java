@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @Controller
@@ -28,10 +29,24 @@ public class VolunteerController {
     public Object Allperson(){return volunteerService.selectAll();}
 
     //查询义工信息
+    @ResponseBody
     @RequestMapping(value="/volunteer/detail", method = RequestMethod.POST)
     public Object SearchPerson(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("vol_id");
-        return volunteerService.selectByPrimaryKey(Integer.parseInt(id));
+        boolean check = volunteerService.checkbyPrimaryKey(Integer.parseInt(id));
+
+        if(check) {
+            jsonObject.put("code",1);
+            jsonObject.put("volunteer",volunteerService.selectByPrimaryKey(Integer.parseInt(id)));
+
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+            return jsonObject;
+        }
     }
 
     //添加义工
@@ -59,6 +74,16 @@ public class VolunteerController {
         String timeStr1 = df.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);*/
 
+        java.util.Date birthday = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         vol.setID(sum);
         vol.setORG_ID(sum);
         vol.setCLIENT_ID(sum);
@@ -66,7 +91,7 @@ public class VolunteerController {
         vol.setGender(gender);
         vol.setPhone(phone);
         vol.setId_card(idcard);
-        //vol.setBirthday(birthday);
+        vol.setBirthday(birthday);
         vol.setISACTIVE("1");
         vol.setCREATED(time);
         vol.setCREATEBY(Integer.parseInt(sysuserid));
@@ -119,11 +144,21 @@ public class VolunteerController {
         String timeStr1 = df.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);*/
 
+        Date birthday = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         volunteer.setUsername(username);
         volunteer.setGender(gender);
         volunteer.setPhone(phone);
         volunteer.setId_card(idcard);
-        //volunteer.setBirthday(birthday);
+        volunteer.setBirthday(birthday);
         volunteer.setUPDATED(time);
         volunteer.setUPDATEBY(Integer.parseInt(updateby));
 

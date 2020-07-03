@@ -35,6 +35,10 @@ public interface VolunteerMapper {
     @Select("Select * FROM volunteer_info WHERE id=#{0} AND ISACTIVE='1'")
     Volunteer selectByPrimaryKey(int id);
 
+    @Select("SELECT COUNT(*) FROM volunteer_info WHERE ID=#{0} AND ISACTIVE='1' ")
+    int checkByPrimaryKey(int id);
+
     @Select("SELECT COUNT(*) FROM volunteer_info")
     int getNum();
+
 }

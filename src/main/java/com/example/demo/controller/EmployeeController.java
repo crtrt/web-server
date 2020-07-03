@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @Controller
@@ -27,10 +29,22 @@ public class EmployeeController {
     public Object AllEmployee(){ return employeeService.selectAll(); }
 
     //工作人员信息
+    @ResponseBody
     @RequestMapping(value="/employee/detail",method=RequestMethod.POST)
     public  Object EmployeeDetail(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("emp_id");
-        return employeeService.selectByPrimaryKey(Integer.parseInt(id));
+        boolean check = employeeService.checkbyPrimaryKey(Integer.parseInt(id));
+        if(check) {
+            jsonObject.put("code",1);
+            jsonObject.put("employee","employeeService.selectByPrimaryKey(Integer.parseInt(id)");
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+            return jsonObject;
+        }
     }
 
     //删除工作人员
@@ -90,6 +104,18 @@ public class EmployeeController {
         hiredate = Timestamp.valueOf(timeStr2);
 */
 
+        Date birthday = new Date();
+        Date hiredate = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+            hiredate = sdf.parse(hire);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         emp.setID(num);
         emp.setORG_ID(num);
         emp.setCLIENT_ID(num);
@@ -97,8 +123,8 @@ public class EmployeeController {
         emp.setGender(gender);
         emp.setPhone(phone);
         emp.setId_card(idcard);
-     /*   emp.setBirthday(birthday);
-        emp.setHire_date(hiredate);*/
+        emp.setBirthday(birthday);
+        emp.setHire_date(hiredate);
         emp.setCREATED(time);
         emp.setISACTIVE("1");//有效
         emp.setCREATEBY(Integer.parseInt(sysuserid));//管理员id
@@ -151,12 +177,24 @@ public class EmployeeController {
         String timeStr2 = df.format(resigndate);
         resigndate = Timestamp.valueOf(timeStr2);*/
 
+        Date birthday = new Date();
+        Date resigndate = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+            resigndate = sdf.parse(resign);
+            //System.out.println(birthday.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         emp.setUsername(username);
         emp.setGender(gender);
         emp.setPhone(phone);
         emp.setId_card(idcard);
-      /*  emp.setBirthday(birthday);
-        emp.setResign_date(resigndate);*/
+        emp.setBirthday(birthday);
+        emp.setResign_date(resigndate);
         emp.setUPDATED(time);
         emp.setUPDATEBY(Integer.parseInt(sysuserid));
 

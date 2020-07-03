@@ -14,5 +14,6 @@ public interface OldpersonService {
     //查
     List<Oldperson> selectAll();
     Oldperson selectByPrimaryKey(int id);
+    boolean checkbyPrimaryKey(int id);
     int getnum();
 }

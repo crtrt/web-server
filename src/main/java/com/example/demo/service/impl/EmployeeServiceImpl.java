@@ -26,6 +26,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public boolean checkbyPrimaryKey(int id) {
+        return employeeMapper.checkByPrimaryKey(id)>0?true:false;
+    }
+
+    @Override
     public List<Employee> selectAll() {
         return employeeMapper.selectAll();
     }

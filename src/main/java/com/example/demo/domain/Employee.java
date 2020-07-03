@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Employee {
 
@@ -11,9 +12,9 @@ public class Employee {
   private String gender;
   private String phone;
   private String id_card;
-  private java.sql.Timestamp birthday;
-  private java.sql.Timestamp hire_date;
-  private java.sql.Timestamp resign_date;
+  private Date birthday;
+  private Date hire_date;
+  private Date resign_date;
   private String imgset_dir;
   private String profile_photo;
   private String DESCRIPTION;
@@ -80,27 +81,27 @@ public class Employee {
     this.id_card = id_card;
   }
 
-  public Timestamp getBirthday() {
+  public Date getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Timestamp birthday) {
+  public void setBirthday(Date birthday) {
     this.birthday = birthday;
   }
 
-  public Timestamp getHire_date() {
+  public Date getHire_date() {
     return hire_date;
   }
 
-  public void setHire_date(Timestamp hire_date) {
+  public void setHire_date(Date hire_date) {
     this.hire_date = hire_date;
   }
 
-  public Timestamp getResign_date() {
+  public Date getResign_date() {
     return resign_date;
   }
 
-  public void setResign_date(Timestamp resign_date) {
+  public void setResign_date(Date resign_date) {
     this.resign_date = resign_date;
   }
 

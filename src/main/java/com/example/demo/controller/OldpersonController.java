@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @Controller
@@ -28,10 +29,24 @@ public class OldpersonController {
     public Object Allperson(){return oldpersonService.selectAll();}
 
     //查询具体信息
+    @ResponseBody
     @RequestMapping(value="/oldperson/detail", method = RequestMethod.POST)
     public Object SearchPerson(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+
         String id = req.getParameter("old_id");
-        return oldpersonService.selectByPrimaryKey(Integer.parseInt(id));
+        boolean check = oldpersonService.checkbyPrimaryKey(Integer.parseInt(id));
+
+        if(check) {
+            jsonObject.put("code",1);
+            jsonObject.put("oldperson",oldpersonService.selectByPrimaryKey(Integer.parseInt(id)));
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+            return jsonObject;
+        }
     }
 
     //添加老人
@@ -59,6 +74,16 @@ public class OldpersonController {
         String timeStr1 = df.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);
 */
+        Date birthday = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         old.setID(sum);
         old.setORG_ID(sum);
         old.setCLIENT_ID(sum);
@@ -66,7 +91,7 @@ public class OldpersonController {
         old.setGender(gender);
         old.setPhone(phone);
         old.setId_card(idcard);
-        //old.setBirthday(birthday);
+        old.setBirthday(birthday);
         old.setISACTIVE("1");
         old.setCREATED(time);
         old.setCREATEBY(Integer.parseInt(sysuserid));
@@ -143,12 +168,22 @@ public class OldpersonController {
         String timeStr1 = df.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);*/
 
+        Date birthday = new Date();
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            birthday = sdf.parse(birth);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Oldperson old = new Oldperson();
         old.setUsername(username);
         old.setGender(gender);
         old.setPhone(phone);
         old.setId_card(idcard);
-        //old.setBirthday(birthday);
+        old.setBirthday(birthday);
         old.setRoom_number(roomnum);
         old.setFirstguardian_name(fguardianname);
         old.setFirstguardian_relationship(fguardianrel);

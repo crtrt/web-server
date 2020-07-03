@@ -9,6 +9,7 @@ public interface EmployeeService {
     boolean updateByPrimaryKey(int id, Employee employee);
     //查
     Employee selectByPrimaryKey(int id);
+    boolean checkbyPrimaryKey(int id);
     List<Employee> selectAll();
     int getnum();
     //增

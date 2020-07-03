@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Oldperson {
 
@@ -12,9 +13,9 @@ public class Oldperson {
   private String gender;
   private String phone;
   private String id_card;
-  private java.sql.Timestamp birthday;
-  private java.sql.Timestamp checkin_date;
-  private java.sql.Timestamp checkoutd_ate;
+  private Date birthday;
+  private Date checkin_date;
+  private Date checkoutd_ate;
   private String imgset_dir;
   private String profile_photo;
   private String room_number;
@@ -91,28 +92,36 @@ public class Oldperson {
     this.id_card = id_card;
   }
 
-  public Timestamp getBirthday() {
+  public Date getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Timestamp birthday) {
+  public void setBirthday(Date birthday) {
     this.birthday = birthday;
   }
 
-  public Timestamp getCheckin_date() {
+  public Date getCheckin_date() {
     return checkin_date;
   }
 
-  public void setCheckin_date(Timestamp checkin_date) {
+  public void setCheckin_date(Date checkin_date) {
     this.checkin_date = checkin_date;
   }
 
-  public Timestamp getCheckoutd_ate() {
+  public Date getCheckoutd_ate() {
     return checkoutd_ate;
   }
 
-  public void setCheckoutd_ate(Timestamp checkoutd_ate) {
+  public void setCheckoutd_ate(Date checkoutd_ate) {
     this.checkoutd_ate = checkoutd_ate;
+  }
+
+  public String getSecondguardian_relationship() {
+    return secondguardian_relationship;
+  }
+
+  public void setSecondguardian_relationship(String secondguardian_relationship) {
+    this.secondguardian_relationship = secondguardian_relationship;
   }
 
   public String getImgset_dir() {

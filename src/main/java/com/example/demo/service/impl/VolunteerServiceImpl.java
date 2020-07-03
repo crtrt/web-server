@@ -25,6 +25,11 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
+    public boolean checkbyPrimaryKey(int id) {
+        return volunteerMapper.checkByPrimaryKey(id)>0?true:false;
+    }
+
+    @Override
     public List<Volunteer> selectAll() {
         return volunteerMapper.selectAll();
     }

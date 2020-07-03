@@ -1,6 +1,8 @@
 package com.example.demo.domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
+
 public class Volunteer {
 
   private int id;
@@ -10,9 +12,9 @@ public class Volunteer {
   private String gender;
   private String phone;
   private String id_card;
-  private java.sql.Timestamp birthday;
-  private java.sql.Timestamp checkin_date;
-  private java.sql.Timestamp checkoutd_ate;
+  private Date birthday;
+  private Date checkin_date;
+  private Date checkoutd_ate;
   private String imgset_dir;
   private String profile_photo;
   private String room_number;
@@ -80,27 +82,27 @@ public class Volunteer {
     this.id_card = id_card;
   }
 
-  public Timestamp getBirthday() {
+  public Date getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Timestamp birthday) {
+  public void setBirthday(Date birthday) {
     this.birthday = birthday;
   }
 
-  public Timestamp getCheckin_date() {
+  public Date getCheckin_date() {
     return checkin_date;
   }
 
-  public void setCheckin_date(Timestamp checkin_date) {
+  public void setCheckin_date(Date checkin_date) {
     this.checkin_date = checkin_date;
   }
 
-  public Timestamp getCheckoutd_ate() {
+  public Date getCheckoutd_ate() {
     return checkoutd_ate;
   }
 
-  public void setCheckoutd_ate(Timestamp checkoutd_ate) {
+  public void setCheckoutd_ate(Date checkoutd_ate) {
     this.checkoutd_ate = checkoutd_ate;
   }
 

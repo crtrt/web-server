@@ -13,6 +13,7 @@ public interface VolunteerService {
     boolean updateByPrimaryKey(int id, Volunteer volunteer);
     //查
     Volunteer selectByPrimaryKey(int id);
+    boolean checkbyPrimaryKey(int id);
     List<Volunteer> selectAll();
     int getnum();
 }
