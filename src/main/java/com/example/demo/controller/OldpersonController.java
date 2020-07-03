@@ -23,15 +23,19 @@ public class OldpersonController {
     @Autowired
     private OldpersonServiceImpl oldpersonService;
 
+    //老人列表
     @RequestMapping(value = "/oldperson", method = RequestMethod.GET)
     public Object Allperson(){return oldpersonService.selectAll();}
 
-    @RequestMapping(value="/oldperson/search", method = RequestMethod.POST)
+    //查询具体信息
+    @RequestMapping(value="/oldperson/detail", method = RequestMethod.POST)
     public Object SearchPerson(HttpServletRequest req){
         String id = req.getParameter("old_id");
         return oldpersonService.selectByPrimaryKey(Integer.parseInt(id));
     }
 
+    //添加老人
+    @ResponseBody
     @RequestMapping(value="/oldperson/insert", method = RequestMethod.POST)
     public Object InsertPerson(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
@@ -52,7 +56,7 @@ public class OldpersonController {
 
         Timestamp birthday = Timestamp.valueOf(birth);
         SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birth);
+        String timeStr1 = df1.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);
 
         old.setID(sum);
@@ -83,14 +87,32 @@ public class OldpersonController {
         }
     }
 
+    //删除老人
+    @ResponseBody
     @RequestMapping(value="/oldperson/delete", method = RequestMethod.POST)
     public Object Delete(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+
         String id = req.getParameter("old_id");
-        return oldpersonService.deleteOldperson(Integer.parseInt(id));
+        boolean delete = oldpersonService.deleteOldperson(Integer.parseInt(id));
+
+        if(delete) {
+            jsonObject.put("code",1);
+            jsonObject.put("msg","删除成功");
+
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+
+            return jsonObject;
+        }
     }
 
+    //修改老人信息
     @ResponseBody
-    @RequestMapping(value="/oldperson/update",method=RequestMethod.POST)
+    @RequestMapping(value="/oldperson/detail/update",method=RequestMethod.POST)
     public Object UpdateByPrimaryKey(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
 
@@ -118,7 +140,7 @@ public class OldpersonController {
 
         Timestamp birthday = Timestamp.valueOf(birth);
         SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birth);
+        String timeStr1 = df1.format(birthday);
         birthday = Timestamp.valueOf(timeStr1);
 
         Oldperson old = new Oldperson();

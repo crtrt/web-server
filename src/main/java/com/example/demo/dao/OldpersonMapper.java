@@ -11,8 +11,8 @@ import java.util.List;
 @Mapper
 public interface OldpersonMapper {
     //增
-    @Insert("INSERT INTO oldperson_info(ID,ORG_ID,CLIENT_ID,username,gender,phone,id_card,birthday,ISACTIVE) VALUES " +
-            "(#{ID},#{ORG_ID},#{CLIENT_ID},#{username},#{gender},#{phone},#{id_card},#{birthday},'1')")
+    @Insert("INSERT INTO oldperson_info(ID,ORG_ID,CLIENT_ID,username,gender,phone,id_card,birthday,ISACTIVE,CREATED,CREATEBY) VALUES " +
+            "(#{ID},#{ORG_ID},#{CLIENT_ID},#{username},#{gender},#{phone},#{id_card},#{birthday},'1',#{CREATED},#{CREATEBY})")
     int insertOldperson(Oldperson oldperson);
 
     //删

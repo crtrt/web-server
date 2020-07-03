@@ -19,9 +19,9 @@ public class Employee {
   private String DESCRIPTION;
   private String ISACTIVE;
   private java.sql.Timestamp CREATED;
-  private long CREATEBY;
+  private int CREATEBY;
   private java.sql.Timestamp UPDATED;
-  private long UPDATEBY;
+  private int UPDATEBY;
   private String REMOVE;
 
   public int getID() {
@@ -144,11 +144,11 @@ public class Employee {
     this.CREATED = CREATED;
   }
 
-  public long getCREATEBY() {
+  public int getCREATEBY() {
     return CREATEBY;
   }
 
-  public void setCREATEBY(long CREATEBY) {
+  public void setCREATEBY(int CREATEBY) {
     this.CREATEBY = CREATEBY;
   }
 
@@ -160,11 +160,11 @@ public class Employee {
     this.UPDATED = UPDATED;
   }
 
-  public long getUPDATEBY() {
+  public int getUPDATEBY() {
     return UPDATEBY;
   }
 
-  public void setUPDATEBY(long UPDATEBY) {
+  public void setUPDATEBY(int UPDATEBY) {
     this.UPDATEBY = UPDATEBY;
   }
 
