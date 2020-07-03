@@ -1,4 +1,3 @@
-/*
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
@@ -36,7 +35,7 @@ public class VolunteerController {
     }
 
     //添加义工
-
+    @ResponseBody
     @RequestMapping(value="/volunteer/insert", method = RequestMethod.POST)
     public Object InsertPerson(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
@@ -55,10 +54,10 @@ public class VolunteerController {
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
 
-        Timestamp birthday = Timestamp.valueOf(birth);
-        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birthday);
-        birthday = Timestamp.valueOf(timeStr1);
+        /*Timestamp birthday = Timestamp.valueOf(birth);
+
+        String timeStr1 = df.format(birthday);
+        birthday = Timestamp.valueOf(timeStr1);*/
 
         vol.setID(sum);
         vol.setORG_ID(sum);
@@ -67,7 +66,7 @@ public class VolunteerController {
         vol.setGender(gender);
         vol.setPhone(phone);
         vol.setId_card(idcard);
-        vol.setBirthday(birthday);
+        //vol.setBirthday(birthday);
         vol.setISACTIVE("1");
         vol.setCREATED(time);
         vol.setCREATEBY(Integer.parseInt(sysuserid));
@@ -96,6 +95,7 @@ public class VolunteerController {
     }
 
     //更新信息
+    @ResponseBody
     @RequestMapping(value="/volunteer/detail/update",method=RequestMethod.POST)
     public Object UpdateByPrimaryKey(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
@@ -114,16 +114,16 @@ public class VolunteerController {
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
 
-        Timestamp birthday = Timestamp.valueOf(birth);
-        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birthday);
-        birthday = Timestamp.valueOf(timeStr1);
+        /*Timestamp birthday = Timestamp.valueOf(birth);
+
+        String timeStr1 = df.format(birthday);
+        birthday = Timestamp.valueOf(timeStr1);*/
 
         volunteer.setUsername(username);
         volunteer.setGender(gender);
         volunteer.setPhone(phone);
         volunteer.setId_card(idcard);
-        volunteer.setBirthday(birthday);
+        //volunteer.setBirthday(birthday);
         volunteer.setUPDATED(time);
         volunteer.setUPDATEBY(Integer.parseInt(updateby));
 
@@ -144,4 +144,3 @@ public class VolunteerController {
     }
 
 }
-*/

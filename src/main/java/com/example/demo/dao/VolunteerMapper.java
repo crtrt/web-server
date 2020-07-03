@@ -22,7 +22,7 @@ public interface VolunteerMapper {
 
     //改
     @Update("UPDATE volunteer_info SET " +
-            "name=#{param2.name},gender=#{param2.gender},phone=#{param2.phone},id_card=#{param2.id_card},birthday=#{param2.birthday}" +
+            "name=#{param2.name},gender=#{param2.gender},phone=#{param2.phone},id_card=#{param2.id_card},birthday=#{param2.birthday}," +
             "UPDATED=#{param2.UPDATED},UPDATEBY=#{param2.UPDATEBY} " +
             "WHERE ID=#{param1}")
     int updateByPrimaryKey(int id, Volunteer volunteer);

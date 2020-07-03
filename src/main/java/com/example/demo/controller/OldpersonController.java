@@ -54,11 +54,11 @@ public class OldpersonController {
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
 
-        Timestamp birthday = Timestamp.valueOf(birth);
-        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birthday);
-        birthday = Timestamp.valueOf(timeStr1);
+     /*   Timestamp birthday = Timestamp.valueOf(birth);
 
+        String timeStr1 = df.format(birthday);
+        birthday = Timestamp.valueOf(timeStr1);
+*/
         old.setID(sum);
         old.setORG_ID(sum);
         old.setCLIENT_ID(sum);
@@ -66,7 +66,7 @@ public class OldpersonController {
         old.setGender(gender);
         old.setPhone(phone);
         old.setId_card(idcard);
-        old.setBirthday(birthday);
+        //old.setBirthday(birthday);
         old.setISACTIVE("1");
         old.setCREATED(time);
         old.setCREATEBY(Integer.parseInt(sysuserid));
@@ -138,17 +138,17 @@ public class OldpersonController {
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
 
-        Timestamp birthday = Timestamp.valueOf(birth);
-        SimpleDateFormat df1 = new SimpleDateFormat("yy-MM-dd");
-        String timeStr1 = df1.format(birthday);
-        birthday = Timestamp.valueOf(timeStr1);
+       /* Timestamp birthday = Timestamp.valueOf(birth);
+
+        String timeStr1 = df.format(birthday);
+        birthday = Timestamp.valueOf(timeStr1);*/
 
         Oldperson old = new Oldperson();
         old.setUsername(username);
         old.setGender(gender);
         old.setPhone(phone);
         old.setId_card(idcard);
-        old.setBirthday(birthday);
+        //old.setBirthday(birthday);
         old.setRoom_number(roomnum);
         old.setFirstguardian_name(fguardianname);
         old.setFirstguardian_relationship(fguardianrel);

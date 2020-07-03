@@ -12,7 +12,7 @@ import java.util.List;
 public interface EmployeeMapper {
 
     //增
-    @Insert("INSERT INTO employee_info(id,ORG_ID,CLIENT_ID,username,gender,phone,id_card,birthday,hire_date,resign_date,ISACTIVE,CREATED,CREATEBY) VALUES " +
+    @Insert("INSERT INTO employee_info(id,ORG_ID,CLIENT_ID,username,gender,phone,id_card,birthday,hire_date,ISACTIVE,CREATED,CREATEBY) VALUES " +
             "(#{ID},#{ORG_ID},#{CLIENT_ID},#{username},#{gender},#{phone},#{id_card},#{birthday},#{hire_date},'1',#{CREATED},#{CREATEBY})")
     int insertEmployee(Employee employee);
 
@@ -23,7 +23,7 @@ public interface EmployeeMapper {
     //改
     @Update("UPDATE employee_info SET " +
             "username=#{param2.username},gender=#{param2.gender},phone=#{param2.phone},id_card=#{param2.id_card},birthday=#{param2.birthday}," +
-            "hire_date=#{hire_date},resign_date=#{resign_date},UPDATED=#{param2.UPDATED},UPDATEBY=#{param2.UPDATEBY} " +
+            "resign_date=#{param2.resign_date},UPDATED=#{param2.UPDATED},UPDATEBY=#{param2.UPDATEBY} " +
             "WHERE ID=#{param1}")
     int updateByPrimaryKey(int id, Employee employee);
 
