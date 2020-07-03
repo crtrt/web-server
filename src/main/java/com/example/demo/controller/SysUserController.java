@@ -60,7 +60,7 @@ public class SysUserController {
         JSONObject jsonObject = new JSONObject();
         SysUser suser = new SysUser();
 
-        int sam = sUserService.getUserNum() + 10001;
+        int sam = sUserService.getnum() + 10001;
         String name = req.getParameter("name").trim();
         String pwd = req.getParameter("password").trim();
         String realname = req.getParameter("realname").trim();

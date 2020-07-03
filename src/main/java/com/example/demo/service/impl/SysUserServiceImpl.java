@@ -31,7 +31,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public int getUserNum() {
+    public int getnum() {
         return sUserMapper.getnum();
     }
 

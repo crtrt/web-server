@@ -1,64 +1,60 @@
 package com.example.demo.domain;
 
-
+import java.sql.Timestamp;
 public class Volunteer {
 
-  private long id;
-  private long orgId;
-  private long clientId;
+  private int id;
+  private int ORG_ID;
+  private int CLIENT_ID;
   private String name;
   private String gender;
   private String phone;
-  private String idCard;
+  private String id_card;
   private java.sql.Timestamp birthday;
-  private java.sql.Timestamp checkinDate;
-  private java.sql.Timestamp checkoutDate;
-  private String imgsetDir;
-  private String profilePhoto;
-  private String description;
-  private String isactive;
-  private java.sql.Timestamp created;
-  private long createby;
-  private java.sql.Timestamp updated;
-  private long updateby;
-  private String remove;
+  private java.sql.Timestamp checkin_date;
+  private java.sql.Timestamp checkoutd_ate;
+  private String imgset_dir;
+  private String profile_photo;
+  private String room_number;
+  private String DESCRIPTION;
+  private String ISACTIVE;
+  private java.sql.Timestamp CREATED;
+  private int CREATEBY;
+  private java.sql.Timestamp UPDATED;
+  private int UPDATEBY;
+  private String REMOVE;
 
-
-  public long getId() {
+  public int getID() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setID(int ID) {
     this.id = id;
   }
 
-
-  public long getOrgId() {
-    return orgId;
+  public int getORG_ID() {
+    return ORG_ID;
   }
 
-  public void setOrgId(long orgId) {
-    this.orgId = orgId;
+  public void setORG_ID(int ORG_ID) {
+    this.ORG_ID = ORG_ID;
   }
 
-
-  public long getClientId() {
-    return clientId;
+  public int getCLIENT_ID() {
+    return CLIENT_ID;
   }
 
-  public void setClientId(long clientId) {
-    this.clientId = clientId;
+  public void setCLIENT_ID(int CLIENT_ID) {
+    this.CLIENT_ID = CLIENT_ID;
   }
 
-
-  public String getName() {
+  public String getname() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setUsername(String name) {
     this.name = name;
   }
-
 
   public String getGender() {
     return gender;
@@ -68,7 +64,6 @@ public class Volunteer {
     this.gender = gender;
   }
 
-
   public String getPhone() {
     return phone;
   }
@@ -77,121 +72,109 @@ public class Volunteer {
     this.phone = phone;
   }
 
-
-  public String getIdCard() {
-    return idCard;
+  public String getId_card() {
+    return id_card;
   }
 
-  public void setIdCard(String idCard) {
-    this.idCard = idCard;
+  public void setId_card(String id_card) {
+    this.id_card = id_card;
   }
 
-
-  public java.sql.Timestamp getBirthday() {
+  public Timestamp getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(java.sql.Timestamp birthday) {
+  public void setBirthday(Timestamp birthday) {
     this.birthday = birthday;
   }
 
-
-  public java.sql.Timestamp getCheckinDate() {
-    return checkinDate;
+  public Timestamp getCheckin_date() {
+    return checkin_date;
   }
 
-  public void setCheckinDate(java.sql.Timestamp checkinDate) {
-    this.checkinDate = checkinDate;
+  public void setCheckin_date(Timestamp checkin_date) {
+    this.checkin_date = checkin_date;
   }
 
-
-  public java.sql.Timestamp getCheckoutDate() {
-    return checkoutDate;
+  public Timestamp getCheckoutd_ate() {
+    return checkoutd_ate;
   }
 
-  public void setCheckoutDate(java.sql.Timestamp checkoutDate) {
-    this.checkoutDate = checkoutDate;
+  public void setCheckoutd_ate(Timestamp checkoutd_ate) {
+    this.checkoutd_ate = checkoutd_ate;
   }
 
-
-  public String getImgsetDir() {
-    return imgsetDir;
+  public String getImgset_dir() {
+    return imgset_dir;
   }
 
-  public void setImgsetDir(String imgsetDir) {
-    this.imgsetDir = imgsetDir;
+  public void setImgset_dir(String imgset_dir) {
+    this.imgset_dir = imgset_dir;
   }
 
-
-  public String getProfilePhoto() {
-    return profilePhoto;
+  public String getProfile_photo() {
+    return profile_photo;
   }
 
-  public void setProfilePhoto(String profilePhoto) {
-    this.profilePhoto = profilePhoto;
+  public void setProfile_photo(String profile_photo) {
+    this.profile_photo = profile_photo;
   }
 
 
-  public String getDescription() {
-    return description;
+  public String getDESCRIPTION() {
+    return DESCRIPTION;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setDESCRIPTION(String DESCRIPTION) {
+    this.DESCRIPTION = DESCRIPTION;
   }
 
-
-  public String getIsactive() {
-    return isactive;
+  public String getISACTIVE() {
+    return ISACTIVE;
   }
 
-  public void setIsactive(String isactive) {
-    this.isactive = isactive;
+  public void setISACTIVE(String ISACTIVE) {
+    this.ISACTIVE = ISACTIVE;
   }
 
-
-  public java.sql.Timestamp getCreated() {
-    return created;
+  public Timestamp getCREATED() {
+    return CREATED;
   }
 
-  public void setCreated(java.sql.Timestamp created) {
-    this.created = created;
+  public void setCREATED(Timestamp CREATED) {
+    this.CREATED = CREATED;
   }
 
-
-  public long getCreateby() {
-    return createby;
+  public int getCREATEBY() {
+    return CREATEBY;
   }
 
-  public void setCreateby(long createby) {
-    this.createby = createby;
+  public void setCREATEBY(int CREATEBY) {
+    this.CREATEBY = CREATEBY;
   }
 
-
-  public java.sql.Timestamp getUpdated() {
-    return updated;
+  public Timestamp getUPDATED() {
+    return UPDATED;
   }
 
-  public void setUpdated(java.sql.Timestamp updated) {
-    this.updated = updated;
+  public void setUPDATED(Timestamp UPDATED) {
+    this.UPDATED = UPDATED;
   }
 
-
-  public long getUpdateby() {
-    return updateby;
+  public int getUPDATEBY() {
+    return UPDATEBY;
   }
 
-  public void setUpdateby(long updateby) {
-    this.updateby = updateby;
+  public void setUPDATEBY(int UPDATEBY) {
+    this.UPDATEBY = UPDATEBY;
   }
 
-
-  public String getRemove() {
-    return remove;
+  public String getREMOVE() {
+    return REMOVE;
   }
 
-  public void setRemove(String remove) {
-    this.remove = remove;
+  public void setREMOVE(String REMOVE) {
+    this.REMOVE = REMOVE;
   }
 
 }

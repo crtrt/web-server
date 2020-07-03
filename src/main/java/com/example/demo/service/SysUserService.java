@@ -11,11 +11,12 @@ public interface SysUserService {
     boolean addSysUser(SysUser sysUser);
     //ID
     int getsUserID(String name, String password);
-    //num
-    int getUserNum();
+    /*//num
+    //int getUserNum();*/
     //修改信息
     boolean updateByPrimaryKey(int id, SysUser sUser);
     //查
     SysUser selectByPrimaryKey(int id);
     List<SysUser> selectAll();
+    int getnum();
 }
