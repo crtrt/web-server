@@ -119,9 +119,10 @@ public class OldpersonController {
         JSONObject jsonObject = new JSONObject();
 
         String id = req.getParameter("old_id");
+        boolean check = oldpersonService.checkbyPrimaryKey(Integer.parseInt(id));
         boolean delete = oldpersonService.deleteOldperson(Integer.parseInt(id));
 
-        if(delete) {
+        if(delete&&check) {
             jsonObject.put("code",1);
             jsonObject.put("msg","删除成功");
 

@@ -54,7 +54,8 @@ public class EmployeeController {
         JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("emp_id");
         boolean delete = employeeService.deleteByPrimaryKey(Integer.parseInt(id));
-        if(delete) {
+        boolean check = employeeService.checkbyPrimaryKey(Integer.parseInt(id));
+        if(delete&&check) {
             jsonObject.put("code",1);
             jsonObject.put("msg","删除成功");
 

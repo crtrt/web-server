@@ -115,8 +115,23 @@ public class VolunteerController {
     //删除义工
     @RequestMapping(value="/volunteer/delete", method = RequestMethod.POST)
     public Object Delete(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("vol_id");
-        return volunteerService.deleteVolunteer(Integer.parseInt(id));
+        boolean delete = volunteerService.deleteVolunteer(Integer.parseInt(id));
+        boolean check = volunteerService.checkbyPrimaryKey(Integer.parseInt(id));
+        if(check&&delete){
+            jsonObject.put("code",1);
+            jsonObject.put("msg","删除成功");
+
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","ERROR");
+
+            return jsonObject;
+
+        }
     }
 
     //更新信息
