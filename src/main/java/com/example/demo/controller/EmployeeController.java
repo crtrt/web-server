@@ -37,7 +37,7 @@ public class EmployeeController {
         boolean check = employeeService.checkbyPrimaryKey(Integer.parseInt(id));
         if(check) {
             jsonObject.put("code",1);
-            jsonObject.put("employee","employeeService.selectByPrimaryKey(Integer.parseInt(id)");
+            jsonObject.put("employee",employeeService.selectByPrimaryKey(Integer.parseInt(id)));
             return jsonObject;
         }
         else{
