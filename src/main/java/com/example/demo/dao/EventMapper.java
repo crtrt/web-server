@@ -14,13 +14,16 @@ public interface EventMapper {
     public int addEvent(Event event);
 
     //事件查询
-    @Select("SELECT * FROM event_info WHERE oldperson_id=#{oldperson_id}")
+    @Select("SELECT * FROM event_info WHERE oldperson_id=#{param0}")
     public Event selectByOldid(int id);
 
-    @Select("SELECT * FROM event_info WHERE id=#{id}")
+    @Select("SELECT * FROM event_info WHERE id=#{param0}")
     public Event selectByPrimaryKey(int id);
 
-    @Select("SELECT * FROM event_info WHERE oldperson_id=#{oldperson_id} AND event_type=#{event_type}")
+    @Select("SELECT * FROM event_info WHERE event_type=#{param0}")
+    public Event selectByEventType(int type);
+
+    @Select("SELECT * FROM event_info WHERE oldperson_id=#{param0} AND event_type=#{param1}")
     public Event select(int id, int type);
 
     @Select("SELECT * FROM event_info")

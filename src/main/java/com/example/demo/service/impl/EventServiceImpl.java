@@ -21,6 +21,9 @@ public class EventServiceImpl implements EventService {
     public Event selectByOldid(int id) { return eventMapper.selectByOldid(id); }
 
     @Override
+    public Event selectByEventType(int type) { return eventMapper.selectByEventType(type); }
+
+    @Override
     public Event selectByPrimaryKey(int id) { return eventMapper.selectByPrimaryKey(id); }
 
     @Override

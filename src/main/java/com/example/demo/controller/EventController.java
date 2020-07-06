@@ -52,6 +52,15 @@ public class EventController {
     }
 
     @ResponseBody
+    @RequestMapping(value="event/search4",method = RequestMethod.POST)
+    public Object SelectByEventType(HttpServletRequest req){
+
+        String type = req.getParameter("event_type");
+
+        return eventService.selectByPrimaryKey(Integer.parseInt(type));
+    }
+
+    @ResponseBody
     @RequestMapping(value="/event/insert",method = RequestMethod.POST)
     public Object addEvent(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
