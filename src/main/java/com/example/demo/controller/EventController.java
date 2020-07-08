@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@RestController
 @Controller
 public class EventController {
 
@@ -61,6 +63,18 @@ public class EventController {
     }
 
     @ResponseBody
+    @RequestMapping(value="event/search5",method = RequestMethod.POST)
+    public Object SelectTypeNum(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+
+        String type = req.getParameter("event_type");
+        jsonObject.put("num",eventService.typenum(Integer.parseInt(type)));
+        return jsonObject;
+    }
+
+
+
+   /* @ResponseBody
     @RequestMapping(value="/event/insert",method = RequestMethod.POST)
     public Object addEvent(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
@@ -100,5 +114,5 @@ public class EventController {
             return jsonObject;
         }
 
-    }
+    }*/
 }

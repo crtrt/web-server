@@ -8,13 +8,15 @@ public interface EventService {
     //添加事件
     boolean addEvent(Event event);
     //通过老人id查找
-    Event selectByOldid(int id);
+    List<Event> selectByOldid(int id);
     //通过事件类型查找
-    Event selectByEventType(int type);
+    List<Event> selectByEventType(int type);
     //通过id查找
     Event selectByPrimaryKey(int id);
     //通过老人id及事件类型查找
-    Event select(int id, int type);
+    List<Event> select(int id, int type);
     //事件列表
     List<Event> selectAll();
+    //通过事件类型统计事件数量
+    int typenum(int type);
 }
