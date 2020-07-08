@@ -4,7 +4,7 @@ import com.example.demo.domain.Event;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey
+//import org.apache.ibatis.annotations.SelectKey;
 
 import java.util.List;
 

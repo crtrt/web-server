@@ -40,7 +40,7 @@ public class EventController {
 
         String id = req.getParameter("old_id");
 
-        return eventService.selectByPrimaryKey(Integer.parseInt(id));
+        return eventService.selectByOldid(Integer.parseInt(id));
     }
 
     @ResponseBody
@@ -59,7 +59,7 @@ public class EventController {
 
         String type = req.getParameter("event_type");
 
-        return eventService.selectByPrimaryKey(Integer.parseInt(type));
+        return eventService.selectByEventType(Integer.parseInt(type));
     }
 
     @ResponseBody
