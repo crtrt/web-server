@@ -28,9 +28,6 @@ public class SysUserController {
     @Autowired
     private SysUserServiceImpl sUserService;
 
-    @Value("${file.uploadFolder}")
-    String uploadFolder;
-
     //    判断是否登录成功
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -43,12 +40,12 @@ public class SysUserController {
         boolean res = sUserService.verifypasswd(name, password);
         if (res) {
 
-            String imagepath = sUserService.selectByPrimaryKey(id).getLogoimage();
+            String logoimage = sUserService.selectByPrimaryKey(id).getLogoimage();
             session.setAttribute("name", name);
             jsonObject.put("code", 1);
             jsonObject.put("id",id);
             jsonObject.put("msg","登录成功");
-            jsonObject.put("imagepath",imagepath);
+            jsonObject.put("logoimage",logoimage);
 
             return jsonObject;
 
@@ -65,7 +62,7 @@ public class SysUserController {
     // 注册
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Object Register(MultipartFile file, String fileName, HttpServletRequest req) throws IOException {
+    public Object Register(HttpServletRequest req) throws IOException {
 
         JSONObject jsonObject = new JSONObject();
         SysUser suser = new SysUser();
@@ -78,6 +75,7 @@ public class SysUserController {
         String email = req.getParameter("email").trim();
         String phone = req.getParameter("phone").trim();
         String mobile = req.getParameter("mobile").trim();
+        String logoimage = req.getParameter("logoimage").trim();
 
 
         Timestamp time= new Timestamp(System.currentTimeMillis());//获取系统当前时间
@@ -85,22 +83,6 @@ public class SysUserController {
         String timeStr = df.format(time);
         time = Timestamp.valueOf(timeStr);
         //System.out.println(time);
-
-
-        InputStream in = file.getInputStream();
-        File mkdir = new File(uploadFolder);
-        if(!mkdir.exists()) {
-            mkdir.mkdirs();
-        }
-        //定义输出流，将文件写入硬盘
-        FileOutputStream os = new FileOutputStream(mkdir.getPath()+"\\" + fileName);
-        int len = 0;
-        while( (len = in.read()) != -1) {
-            os.write(len);
-        }
-        os.flush(); //关闭流
-        in.close();
-        os.close();
 
         suser.setID(sam);
         suser.setORG_ID(sam);
@@ -114,7 +96,7 @@ public class SysUserController {
         suser.setMOBILE(mobile);
         suser.setCREATED(time);
         suser.setISACTIVE("1");//有效
-        suser.setLogoimage(mkdir.getPath()+"\\"+ fileName);
+        suser.setLogoimage(logoimage);
 
         //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
         boolean ad = sUserService.addSysUser(suser);
