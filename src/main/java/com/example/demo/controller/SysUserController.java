@@ -114,7 +114,7 @@ public class SysUserController {
         suser.setMOBILE(mobile);
         suser.setCREATED(time);
         suser.setISACTIVE("1");//有效
-        suser.setLogoimage(mkdir.getPath()+"\\"+name);
+        suser.setLogoimage(mkdir.getPath()+"\\"+ fileName);
 
         //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
         boolean ad = sUserService.addSysUser(suser);
