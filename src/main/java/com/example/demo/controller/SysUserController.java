@@ -5,14 +5,20 @@ import com.example.demo.dao.SysUserMapper;
 import com.example.demo.domain.SysUser;
 import com.example.demo.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -22,6 +28,8 @@ public class SysUserController {
     @Autowired
     private SysUserServiceImpl sUserService;
 
+    @Value("${file.uploadFolder}")
+    String uploadFolder;
 
     //    判断是否登录成功
     @ResponseBody
@@ -35,10 +43,12 @@ public class SysUserController {
         boolean res = sUserService.verifypasswd(name, password);
         if (res) {
 
+            String imagepath = sUserService.selectByPrimaryKey(id).getLogoimage();
             session.setAttribute("name", name);
             jsonObject.put("code", 1);
             jsonObject.put("id",id);
             jsonObject.put("msg","登录成功");
+            jsonObject.put("imagepath",imagepath);
 
             return jsonObject;
 
@@ -55,7 +65,7 @@ public class SysUserController {
     // 注册
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Object Register(HttpServletRequest req) {
+    public Object Register(MultipartFile file, String fileName, HttpServletRequest req) throws IOException {
 
         JSONObject jsonObject = new JSONObject();
         SysUser suser = new SysUser();
@@ -76,6 +86,22 @@ public class SysUserController {
         time = Timestamp.valueOf(timeStr);
         //System.out.println(time);
 
+
+        InputStream in = file.getInputStream();
+        File mkdir = new File(uploadFolder);
+        if(!mkdir.exists()) {
+            mkdir.mkdirs();
+        }
+        //定义输出流，将文件写入硬盘
+        FileOutputStream os = new FileOutputStream(mkdir.getPath()+"\\" + fileName);
+        int len = 0;
+        while( (len = in.read()) != -1) {
+            os.write(len);
+        }
+        os.flush(); //关闭流
+        in.close();
+        os.close();
+
         suser.setID(sam);
         suser.setORG_ID(sam);
         suser.setCLIENT_ID(sam);
@@ -88,6 +114,7 @@ public class SysUserController {
         suser.setMOBILE(mobile);
         suser.setCREATED(time);
         suser.setISACTIVE("1");//有效
+        suser.setLogoimage(mkdir.getPath()+"\\"+name);
 
         //System.out.println(suser.getID()+"  "+suser.getUserName()+"  "+sex+"   "+phone+"     "+email+"      "+sex);
         boolean ad = sUserService.addSysUser(suser);
@@ -149,7 +176,7 @@ public class SysUserController {
     public Object AllSysUser(){ return sUserService.selectAll();}
 
     @RequestMapping(value="/sysuser/detail", method = RequestMethod.POST)
-    public Object SearchOldperson(HttpServletRequest req){
+    public Object SearchSysUser(HttpServletRequest req){
         String id = req.getParameter("id");
         return sUserService.selectByPrimaryKey(Integer.parseInt(id));
     }
