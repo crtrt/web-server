@@ -15,11 +15,11 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private EventMapper eventMapper;
 
-    @Override
-    public boolean addEvent(Event event) { return eventMapper.addEvent(event)>0?true:false; }
+    /*@Override
+    public boolean addEvent(Event event) { return eventMapper.addEvent(event)>0?true:false; }*/
 
     @Override
-    public List<Event> selectByOldid(int id) { return eventMapper.selectByOldid(id); }
+    public List<Event> selectByOld(String name) { return eventMapper.selectByOld(name); }
 
     @Override
     public List<Event> selectByEventType(int type) { return eventMapper.selectByEventType(type); }
@@ -28,7 +28,7 @@ public class EventServiceImpl implements EventService {
     public Event selectByPrimaryKey(int id) { return eventMapper.selectByPrimaryKey(id); }
 
     @Override
-    public List<Event> select(int id, int type) { return eventMapper.select(id, type); }
+    public List<Event> select(String name, int type) { return eventMapper.select(name, type); }
 
     @Override
     public List<Event> selectAll() { return eventMapper.selectAll(); }

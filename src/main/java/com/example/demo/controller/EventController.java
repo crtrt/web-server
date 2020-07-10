@@ -5,6 +5,9 @@ import com.example.demo.domain.Event;
 import com.example.demo.domain.EventImage;
 import com.example.demo.service.impl.EventServiceImpl;
 import org.apache.commons.io.IOUtils;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.net.URLEncoder;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @Controller
@@ -31,9 +33,13 @@ public class EventController {
     @Autowired
     private EventServiceImpl eventService;
 
+    //List<event> ,json
     @RequestMapping(value="/event",method= RequestMethod.GET)
-    public Object AllEvent(){ return eventService.selectAll(); }
+    public Object AllEvent(/*HttpServletResponse res*/){
+        return eventService.selectAll();
+    }
 
+/*    //Event
     @ResponseBody
     @RequestMapping(value="event/search1",method = RequestMethod.POST)
     public Object SelectByPrimaryKey(HttpServletRequest req){
@@ -47,19 +53,19 @@ public class EventController {
     @RequestMapping(value="event/search2",method = RequestMethod.POST)
     public Object SelectByOldid(HttpServletRequest req){
 
-        String id = req.getParameter("old_id");
+        String name = req.getParameter("old_name");
 
-        return eventService.selectByOldid(Integer.parseInt(id));
+        return eventService.selectByOld(name);
     }
 
     @ResponseBody
     @RequestMapping(value="event/search3",method = RequestMethod.POST)
     public Object SelectOldidtype(HttpServletRequest req){
 
-        String id = req.getParameter("old_id");
+        String name = req.getParameter("old_name");
         String type = req.getParameter("event_type");
 
-        return eventService.select(Integer.parseInt(id),Integer.parseInt(type));
+        return eventService.select(name,Integer.parseInt(type));
     }
 
     @ResponseBody
@@ -80,9 +86,70 @@ public class EventController {
         jsonObject.put("type",type);
         jsonObject.put("num",eventService.typenum(Integer.parseInt(type)));
         return jsonObject;
+    }*/
+
+    //只获取数据库截图
+    @ResponseBody
+    @RequestMapping(value="event/image",method = RequestMethod.POST)
+    public void gettImage(HttpServletResponse res, HttpServletRequest req) throws IOException {
+
+        String id = req.getParameter("event_id");
+
+        byte[] bytes = eventService.selectByPrimaryKey(Integer.parseInt(id)).getImage();
+
+        String fileName = id + ".png";
+
+        fileName = URLEncoder.encode(fileName, "UTF-8");
+        res.setHeader("Content-disposition", "attachment;filename=" + fileName);
+        res.setContentType("image/jpeg, image/jpg, image/png, image/gif");  //设置输出流内容格式为图片格式
+        InputStream in1 = new ByteArrayInputStream(bytes);  //将字节流转换为输入流
+        IOUtils.copy(in1, res.getOutputStream());//将字节从 InputStream复制到OutputStream中
+
     }
 
+    //表格格式
+    @RequestMapping(value = "/event/excel", method = RequestMethod.GET)
+    //@CrossOrigin(origins = "*", maxAge = 3600)
+    public void eventExcel(HttpServletResponse response) {
+        List<Event> list = eventService.selectAll() ;//查出数据库数据
+        XSSFWorkbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet("events");//创建一张表
+        Row titleRow = sheet.createRow(0);//创建第一行，起始为0
+        titleRow.createCell(0).setCellValue("id");
+        titleRow.createCell(1).setCellValue("event_type");//第一列
+        titleRow.createCell(2).setCellValue("event_date");
+        titleRow.createCell(3).setCellValue("event_location");
+        titleRow.createCell(4).setCellValue("event_desc");
+        titleRow.createCell(5).setCellValue("oldperson_name");
+        int cell = 1;
+        for (Event event : list) {
+            Row row = sheet.createRow(cell);//从第二行开始保存数据
+            row.createCell(0).setCellValue(event.getId());
+            row.createCell(1).setCellValue(event.getEvent_type());//将数据库的数据遍历出来
+            row.createCell(2).setCellValue(event.getEvent_date());
+            row.createCell(3).setCellValue(event.getEvent_location());
+            row.createCell(4).setCellValue(event.getEvent_desc());
+            row.createCell(5).setCellValue(event.getOldperson_name());
+            cell++;
+        }
 
+        String fileName = "events.xlsx";
+        OutputStream outputStream = null;
+        try {
+            fileName = URLEncoder.encode(fileName, "UTF-8");
+            //设置ContentType请求信息格式
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+            outputStream = response.getOutputStream();
+            wb.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
    /* @ResponseBody
     @RequestMapping(value="/event/insert",method = RequestMethod.POST)

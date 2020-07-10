@@ -162,5 +162,5 @@ public class SysUserController {
         String id = req.getParameter("id");
         return sUserService.selectByPrimaryKey(Integer.parseInt(id));
     }
-
+    
 }

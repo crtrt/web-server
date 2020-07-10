@@ -12,7 +12,8 @@ public class Event {
   private Date event_date;
   private String event_location;
   private String event_desc;
-  private int oldperson_id;
+  private String oldperson_name;
+  private byte[] image;
 
   public int getId() {
     return id;
@@ -54,11 +55,19 @@ public class Event {
     this.event_desc = event_desc;
   }
 
-  public int getOldperson_id() {
-    return oldperson_id;
+  public String getOldperson_name() {
+    return oldperson_name;
   }
 
-  public void setOldperson_id(int oldperson_id) {
-    this.oldperson_id = oldperson_id;
+  public void setOldperson_name(String oldperson_name) {
+    this.oldperson_name = oldperson_name;
+  }
+
+  public byte[] getImage() {
+    return image;
+  }
+
+  public void setImage(byte[] image) {
+    this.image = image;
   }
 }

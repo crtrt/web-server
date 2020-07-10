@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 @RestController
 @Controller
 public class EventImageController {
     @Autowired
     EventImageServiceImpl eventImageService;
 
-    //获取数据库截图
+ /*   //获取数据库截图
     @ResponseBody
     @RequestMapping(value="event/image",method = RequestMethod.POST)
     public void gettImage(HttpServletResponse res, HttpServletRequest req) throws IOException {
@@ -35,5 +36,5 @@ public class EventImageController {
         IOUtils.copy(in1, res.getOutputStream());//将字节从 InputStream复制到OutputStream中
 
 
-    }
+    }*/
 }
