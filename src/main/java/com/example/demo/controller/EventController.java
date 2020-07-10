@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.domain.Event;
+import com.example.demo.domain.EventImage;
 import com.example.demo.service.impl.EventServiceImpl;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -68,6 +77,7 @@ public class EventController {
         JSONObject jsonObject = new JSONObject();
 
         String type = req.getParameter("event_type");
+        jsonObject.put("type",type);
         jsonObject.put("num",eventService.typenum(Integer.parseInt(type)));
         return jsonObject;
     }

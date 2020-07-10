@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Event;
+import com.example.demo.domain.EventImage;
 
 import java.util.List;
 

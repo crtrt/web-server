@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Event;
+import com.example.demo.domain.EventImage;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

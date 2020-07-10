@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.EventMapper;
 import com.example.demo.domain.Event;
+import com.example.demo.domain.EventImage;
 import com.example.demo.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

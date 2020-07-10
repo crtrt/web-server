@@ -10,7 +10,7 @@
     </commentGenerator>
 
     <!-- 数据库的相关配置 -->
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/old_care?serverTimezone=Asia/Shanghai&amp;nullCatalogMeansCurrent=true" userId="root" password="yy990610"/>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://123.57.246.9:3306/oldcare?serverTimezone=Asia/Shanghai&amp;nullCatalogMeansCurrent=true" userId="root" password="199918"/>
 
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
