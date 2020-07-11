@@ -34,7 +34,7 @@ public class EventController {
     //byte[]
     @RequestMapping(value="/event",method= RequestMethod.GET)
     public Object AllEvent(/*HttpServletResponse res*/){
-        return eventService.selectAll();
+        return eventService.selectPart();
     }
 
     @ResponseBody
@@ -56,9 +56,10 @@ public class EventController {
 
 
 
-/*    *//*
-     * 图片1
-     *//*
+
+/*
+     // 图片1
+
     //文件
     @ResponseBody
     @RequestMapping(value="event/image1",method = RequestMethod.POST)
@@ -77,13 +78,14 @@ public class EventController {
         IOUtils.copy(in1, res.getOutputStream());//将字节从 InputStream复制到OutputStream中
 
     }
+*/
 
-    *//*
-     *图片2
-     *//*
+
+     //图片2
+
     //base64
     @ResponseBody
-    @RequestMapping(value="event/image2",method = RequestMethod.POST)
+    @RequestMapping(value="event/image",method = RequestMethod.POST)
     public Object gettImage(HttpServletRequest req) throws Exception {
         JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("event_id");
@@ -91,7 +93,7 @@ public class EventController {
         if(e.getImage() != null) {
             String image = Base64String(e.getImage());
             jsonObject.put("event_id", id);
-            jsonObject.put("image", image);
+            jsonObject.put("image", "data:image/png;base64,"+image);
             jsonObject.put("code", 1);
             return jsonObject;
         }
@@ -102,7 +104,7 @@ public class EventController {
         }
     }
 
-    //表格格式
+ /*   //表格格式
     @RequestMapping(value = "/event/excel", method = RequestMethod.GET)
     //@CrossOrigin(origins = "*", maxAge = 3600)
     public void eventExcel(HttpServletResponse response) {
@@ -145,12 +147,12 @@ public class EventController {
             e.printStackTrace();
         }
     }
-
+*/
 
     //byte[]转base64
     public static String Base64String(byte[] b){
         return Base64.encodeBase64String(b);
-    }*/
+    }
 
     /*    //Event
     @ResponseBody
