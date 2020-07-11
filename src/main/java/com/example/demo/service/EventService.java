@@ -15,7 +15,7 @@ public interface EventService {
     //通过id查找
     Event selectByPrimaryKey(int id);
     //通过老人及事件类型查找
-    List<Event> select(String name, int type);
+    int select(String name, int type);
     //事件列表
     List<Event> selectAll();
     //通过事件类型统计事件数量

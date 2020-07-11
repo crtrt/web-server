@@ -39,6 +39,33 @@ public class EventController {
         return eventService.selectAll();
     }
 
+    @ResponseBody
+    @RequestMapping(value="event/count",method = RequestMethod.POST)
+    public Object SelectCount(HttpServletRequest req){
+        JSONObject jsonObject = new JSONObject();
+
+        for(int i=0;i<5;i++){
+            String name = req.getParameter("old_name");
+            int type = i;
+            if(eventService.select(name,type)>0) {
+                JSONObject user = new JSONObject();
+                user.put("event_type", type);
+                user.put("count", eventService.select(name,type));
+                jsonObject.put("event", user);
+            }
+        }
+        if(jsonObject!=null) {
+            jsonObject.put("code", 1);
+            jsonObject.put("msg", "查询成功");
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code", 1);
+            jsonObject.put("msg", "暂无数据");
+            return jsonObject;
+        }
+
+    }
 /*    //Event
     @ResponseBody
     @RequestMapping(value="event/search1",method = RequestMethod.POST)

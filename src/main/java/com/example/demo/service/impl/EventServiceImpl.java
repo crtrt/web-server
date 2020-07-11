@@ -28,7 +28,7 @@ public class EventServiceImpl implements EventService {
     public Event selectByPrimaryKey(int id) { return eventMapper.selectByPrimaryKey(id); }
 
     @Override
-    public List<Event> select(String name, int type) { return eventMapper.select(name, type); }
+    public int select(String name, int type) { return eventMapper.select(name, type); }
 
     @Override
     public List<Event> selectAll() { return eventMapper.selectAll(); }
