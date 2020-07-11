@@ -1,10 +1,9 @@
 package com.example.demo.domain;
 
-
-import java.sql.Timestamp;
 import java.util.Date;
+import java.sql.Blob;
 
-public class Event {
+public class Event{
 
   private int id;
   private int event_type;
