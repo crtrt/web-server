@@ -31,7 +31,7 @@ public class EventController {
     @Autowired
     private EventServiceImpl eventService;
 
-    //byte[]
+
     @RequestMapping(value="/event",method= RequestMethod.GET)
     public Object AllEvent(/*HttpServletResponse res*/){
         return eventService.selectPart();
@@ -90,7 +90,7 @@ public class EventController {
         JSONObject jsonObject = new JSONObject();
         String id = req.getParameter("event_id");
         Event e = eventService.selectByPrimaryKey(Integer.parseInt(id));
-        if(e.getImage() != null) {
+        if(e != null && e.getImage() != null) {
             String image = Base64String(e.getImage());
             jsonObject.put("event_id", id);
             jsonObject.put("image", "data:image/png;base64,"+image);
@@ -100,6 +100,26 @@ public class EventController {
         else{
             jsonObject.put("code",0);
             jsonObject.put("msg","无法找到图片");
+            return jsonObject;
+        }
+    }
+
+    //url
+    @ResponseBody
+    @RequestMapping(value="event/imageurl",method = RequestMethod.POST)
+    public Object gettImageurl(HttpServletRequest req) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        String id = req.getParameter("event_id");
+        Event e = eventService.selectByPrimaryKey(Integer.parseInt(id));
+        if(e != null && e.getUrl() != null) {
+            jsonObject.put("event_id", id);
+            jsonObject.put("image", e.getUrl());
+            jsonObject.put("code", 1);
+            return jsonObject;
+        }
+        else{
+            jsonObject.put("code",0);
+            jsonObject.put("msg","无法找到图片url");
             return jsonObject;
         }
     }

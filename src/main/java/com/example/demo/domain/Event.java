@@ -13,6 +13,7 @@ public class Event{
   private String event_desc;
   private String oldperson_name;
   private byte[] image;
+  private String url;
 
   public int getId() {
     return id;
@@ -68,5 +69,13 @@ public class Event{
 
   public void setImage(byte[] image) {
     this.image = image;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 }
