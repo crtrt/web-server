@@ -7,7 +7,7 @@ public class Event{
 
   private int id;
   private int event_type;
-  //0代表情感检测，1代表义工交互检测，2代表陌生人检测，3代表摔倒检测，4代表禁止区域入侵检测
+  //1代表义工交互检测，2代表陌生人检测，3代表摔倒检测，4代表禁止区域入侵检测，5angry，6smile
   private Date event_date;
   private String event_location;
   private String event_desc;

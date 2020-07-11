@@ -42,33 +42,23 @@ public class EventController {
     public Object SelectCount(HttpServletRequest req){
         JSONObject jsonObject = new JSONObject();
 
-        for(int i=0;i<5;i++){
+        for(int i=1;i<7;i++){
             String name = req.getParameter("old_name");
             int type = i;
-            if(eventService.select(name,type)>0) {
-                JSONObject user = new JSONObject();
-                user.put("event_type", type);
-                user.put("count", eventService.select(name,type));
-                jsonObject.put("event", user);
-            }
+            //{count1,10}
+            jsonObject.put("count"+Integer.toString(type), eventService.select(name,type));
         }
-        if(jsonObject!=null) {
-            jsonObject.put("code", 1);
-            jsonObject.put("msg", "查询成功");
-            return jsonObject;
-        }
-        else{
-            jsonObject.put("code", 1);
-            jsonObject.put("msg", "暂无数据");
-            return jsonObject;
-        }
+        jsonObject.put("code", 1);
+        jsonObject.put("msg", "查询成功");
+        return jsonObject;
 
     }
 
 
-    /*
+
+/*    *//*
      * 图片1
-     */
+     *//*
     //文件
     @ResponseBody
     @RequestMapping(value="event/image1",method = RequestMethod.POST)
@@ -88,9 +78,9 @@ public class EventController {
 
     }
 
-    /*
+    *//*
      *图片2
-     */
+     *//*
     //base64
     @ResponseBody
     @RequestMapping(value="event/image2",method = RequestMethod.POST)
@@ -160,7 +150,7 @@ public class EventController {
     //byte[]转base64
     public static String Base64String(byte[] b){
         return Base64.encodeBase64String(b);
-    }
+    }*/
 
     /*    //Event
     @ResponseBody
